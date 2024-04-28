@@ -1,0 +1,237 @@
+.contacts__hero-section {
+    padding: 90px 0;
+    background-image: url('../../assets/images/contact-bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.contacts__hero-title {
+    margin: 0;
+    margin-bottom: 24px;
+    padding: 0;
+    color: #FFF;
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.contacts__hero-desc {
+    width: 582px;
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148%; /* 29.6px */
+}
+
+.contacts__networks-section {
+    padding: 60px 0;
+}
+
+.contacts__networks-title {
+    margin: 0;
+    margin-bottom: 24px;
+    padding: 0;
+    color: var(--Text-primary, #051022);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.contacts__networks-desc {
+    width: 618px;
+    margin: 0;
+    margin-bottom: 54px;
+    padding: 0;
+    color: var(--Text-secondary, #959595);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.contacts__networks-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.contacts__networks-item {
+    width: 210px;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg, #FCFBFB);
+    border: 1.5px solid transparent;
+    border-radius: 5px;
+    transition: all 300ms linear;
+}
+
+.contacts__networks-item + .contacts__networks-item {
+    margin-left: 32px;
+}
+
+.linkedin:hover {
+    border: 1.5px solid #007AB9;
+    background-color: #FFF;
+}
+
+.linkedin:hover .contacts__networks-item-title{
+    color: #007AB9;
+}
+
+.linkedin:hover .linkedin-btn {
+    background-color: #007AB9;
+    color: #FFF;
+}
+
+.instagram:hover {
+    border: 1.5px solid #FE5F5E;
+    background-color: #FFF;
+}
+
+.instagram:hover .contacts__networks-item-title{
+    color: #FE5F5E;
+}
+
+.instagram:hover .instagram-btn {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    color: #FFF;
+}
+
+.telegram:hover{
+    border: 1.5px solid #2AABEE;
+    background-color: #FFF;
+}
+
+.telegram:hover .contacts__networks-item-title{
+    color: #2AABEE;
+}
+
+.telegram:hover .telegram-btn {
+    background-color: #2AABEE;
+    color: #FFF;
+}
+
+.facebook:hover{
+    border: 1.5px solid #3B5998;
+    background-color: #FFF;
+}
+
+.facebook:hover .contacts__networks-item-title{
+    color: #3B5998;
+}
+
+.facebook:hover .facebook-btn {
+    background-color: #3B5998;
+    color: #FFF;
+}
+
+.contacts__networks-item-title  {
+    margin: 0;
+    margin-bottom: 12px;
+    padding: 0;
+    color: var(--Text-primary, #051022);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all 300ms linear;
+}
+
+.contacts__networks-item-desc {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    color: var(--Text-secondary, #959595);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.contacts__networks-item-btn {
+    width: 100%;
+    padding: 7px 0;
+    color: var(--Text-primary, #051022);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 2px;
+    background: #F0F0F0;
+    transition: all 300ms linear;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    .contacts__hero-section {
+        padding: 24px 0;
+    }
+
+    .contacts__hero-title {
+        margin-bottom: 14px;
+        font-size: 16px;
+    }
+
+    .contacts__hero-desc {
+        width: 290px;
+        font-size: 12px;
+    }
+
+    .contacts__networks-section {
+        padding: 50px 0;
+    }
+
+    .contacts__networks-title {
+        margin-bottom: 16px;
+        font-size: 20px;
+    }
+
+    .contacts__networks-desc {
+        width: 292px;
+        margin-bottom: 24px;
+        font-size: 13px;
+    }
+
+    .contacts__networks-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .contacts__networks-item {
+        width: 165px;
+        padding: 16px 12px;
+    }
+
+    .contacts__networks-item + .contacts__networks-item {
+        margin-left: 0;
+    }
+}

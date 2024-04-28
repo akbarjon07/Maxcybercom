@@ -1,0 +1,482 @@
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-style: normal;
+    line-height: normal;
+}
+
+/******** ABOUT HERO ********/
+
+.about__hero-section {
+    padding: 90px 0;
+    background-image: url('../../assets/images/about-bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.about__hero-title {
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.about__hero-desc {
+    width: 582px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 148%;
+}
+
+/******** ABOUT COMPANY ********/
+
+.about-company-section {
+    padding: 80px 0;
+    background-image: url(../../assets/images/about-bg.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: top 260px right 2.5rem;
+}
+
+.about-company-section__top-wrapper {
+    margin-bottom: 10px;
+}
+
+.about-company-section__top-title {
+    margin-bottom: 32px;
+    text-align: left;
+    color:#051022;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.about-company-section__top-desc {
+    margin-left: 20px;
+    width: 658px;
+    text-align: left;
+    color: #051022;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.about-company-section__bottom-wrapper {
+    margin-left: 20px;
+}
+
+.about-company-section__bottom-title {
+    margin-bottom: 20px;
+    color:#051022;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.about-company-section__left-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-company-section__bottom-list {
+    margin: 0;
+    margin-left: 20px;
+    padding: 0;
+    list-style: inside;
+}
+
+.about-company-section__bottom-item {
+    color: #051022;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.about-company-section__bottom-item + .about-company-section__bottom-item {
+    margin-top: 5px;
+}
+
+.about-company-section__bottom-qoute {
+    margin-right: 30px;
+    width: 480px;
+    padding: 50px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 34px;
+    background-color: #051022;
+}
+
+/******** MISSION ********/
+
+
+.mission-section {
+    padding-bottom: 70px;
+}
+
+.mission-section__title {
+    margin-bottom: 32px;
+    text-align: left;
+    color:#051022;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.mission-section__desc {
+    margin-bottom: 40px;
+    color: #051022;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.mission-section__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/******** COMMENT ********/
+
+.comment-section {
+    padding-bottom: 80px;
+}
+
+.comment-section__main-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-section__client-number {
+    width: 341px;
+    padding: 125px 0;
+    background:#051022;
+}
+
+.comment-section__client-desc {
+    color: #FFF;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 656;
+}
+
+.comment-section__client-desc span {
+    font-size: 40px;
+}
+
+.comment-section__comment-wrapper {
+    padding: 30px;
+    border: 1px solid rgba(126, 128, 137, 0.20);
+    background: #FCFBFB;
+}
+
+.comment-section__comment-text {
+    width: 800px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #959595;
+    font-size: 20px;
+    font-weight: 350;
+}
+
+.comment-section__name-text {
+    margin-bottom: 6px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 656;
+    text-align: left;
+}
+
+.comment-section__job-text {
+    color: rgba(0, 0, 0, 0.35);
+    font-size: 15px;
+    font-weight: 457;
+    text-align: left;
+}
+
+/******** TEAM ********/
+
+.team-section {
+    padding-bottom: 80px;
+}
+
+.team-section__title {
+    margin-bottom: 48px;
+    text-align: left;
+    color:#051022;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.team-section__main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team-section__wrapper {
+    width: 580px;
+    padding: 30px 40px;
+    border: 1px solid rgba(126, 128, 137, 0.20);
+    background:#FCFBFB;
+}
+
+.team-section__card-title {
+    margin-top: 28px;
+    margin-bottom: 15px;
+    text-align: left;
+    color: #000;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.team-section__card-list {
+    margin: 0;
+    padding: 0;
+    list-style: inside;
+}
+
+.just-list {
+    margin: 50px 0;
+}
+
+.team-section__card-item {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 167.182%;
+}
+
+.team-section__card-item + .team-section__card-item {
+    margin-top: 8px;
+}
+
+.team-section__card-desc {
+    margin-top: 30px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 167.182%;
+    text-align: left;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    /******** ABOUT HERO ********/
+
+    .about__hero-section {
+        padding: 24px 0;
+    }
+
+    .about__hero-title {
+        margin-bottom: 14px;
+        font-size: 16px;
+    }
+
+    .about__hero-desc {
+        width: 290px;
+        font-size: 12px;
+    }
+
+    /******** ABOUT COMPANY ********/
+
+    .about-company-section {
+        overflow-x: hidden !important;
+    }
+
+    .about-company-section__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .about-company-section {
+        padding: 24px 0;
+        background-image: none;
+    }
+
+    .about-company-section__top-title {
+        margin-bottom: 8px;
+        font-size: 20px;
+    }
+
+    .about-company-section__top-desc {
+        margin-left: 0;
+        width: 340px;
+        font-size: 13px;
+    }
+
+    .about-company-section__bottom-wrapper {
+        margin-left: 0px;
+    }
+
+    .about-company-section__bottom-title {
+        width: 340px;
+        margin-bottom: 8px;
+        font-size: 20px;
+    }
+
+    .about-company-section__left-wrapper {
+        flex-direction: column;
+    }
+
+    .about-company-section__bottom-list {
+        margin-left: 0;
+    }
+
+    .about-company-section__bottom-item {
+        font-size: 13px;
+    }
+
+    .about-company-section__bottom-qoute {
+        margin-top: 30px;
+        margin-right: 0;
+        width: 340px;
+        padding: 18px 24px;
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    /******** MISSION ********/
+
+    .mission-section__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mission-section {
+        padding-bottom: 24px;
+    }
+
+    .mission-section__title {
+        margin-bottom: 8px;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    .mission-section__desc {
+        width: 340px;
+        margin-bottom: 12px;
+        font-size: 12px;
+    }
+
+    .mission-section__list {
+        gap: 20px;
+    }
+
+    .mission-section__img {
+        width: 70px;
+        height: 85px;
+    }
+
+    /******** COMMENT ********/
+
+    .comment-section {
+        padding-bottom: 24px;
+    }
+
+    .comment-section__main-wrapper {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .comment-section__client-number {
+        width: 340px;
+        padding: 16px 0;
+    }
+
+    .comment-section__client-desc {
+        font-size: 12px;
+    }
+
+    .comment-section__client-desc span {
+        font-size: 15px;
+    }
+
+    .comment-section__comment-wrapper {
+        margin-top: 20px;
+        padding: 16px;
+    }
+
+    .comment-section__comment-text {
+        width: 310px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+
+    .comment-section__name-text {
+        font-size: 14px;
+    }
+
+    .comment-section__job-text {
+        font-size: 12px;
+    }
+
+    .comment-section__comment-wrapper svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    /******** TEAM ********/
+
+    .team-section {
+        padding-bottom: 32px;
+    }
+
+    .team-section__title {
+        margin-bottom: 16px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .team-section__main-wrapper {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .team-section__wrapper {
+        width: 340px;
+        padding: 16px;
+    }
+
+    .team-section__card-title {
+        margin-top: 16px;
+        margin-bottom: 2px;
+        font-size: 16px;
+    }
+
+    .just-list {
+        margin: 20px 0;
+    }
+
+    .team-section__card-item {
+        font-size: 14px;
+    }
+
+    .team-section__card-item + .team-section__card-item {
+        margin-top: 5px;
+    }
+
+    .team-section__card-desc {
+        margin-top: 30px;
+        font-size: 16px;
+    }
+
+    .top {
+        margin-top: 20px;
+    }
+}

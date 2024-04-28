@@ -1,0 +1,146 @@
+.footer {
+    padding: 50px 0;
+    background-color: #051022;
+}
+
+.footer__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer__list-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 180px;
+}
+
+.footer__logo-desc {
+    margin: 0;
+    margin-top: 35px;
+    padding: 0;
+    width: 420px;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+}
+
+.footer__logo-list {
+    margin: 0;
+    margin-top: 35px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.footer__logo-item + .footer__logo-item {
+    margin-left: 45px;
+}
+
+.footer__logo-item path {
+    transition: all 300ms linear;
+}
+
+.footer__logo-item:hover path {
+    stroke: #8C0F95;
+}
+
+.footer__company-list {
+    margin: 0;
+    padding: 0;
+}
+
+.footer__company-item + .footer__company-item {
+    margin-top: 43px;
+}
+
+.footer__company-item:hover .footer__company-desc {
+    opacity: 0.4;
+}
+
+.footer__company-svg {
+    width: 18px;
+    height: 18px;
+    padding: 4px 6px;
+    background: #FFF;
+}
+
+.footer__company-desc {
+    margin: 0;
+    margin-left: 10px;
+    padding: 0;
+    color: var(--Colors-Neutral-White, #FFF);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    transition: all 300ms linear;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: -10px;
+    padding: 0;
+    color: var(--Colors-Neutral-White, #FFF);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.footer__span {
+    margin-top: 50px;
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+.footer__company-name {
+    margin: 0;
+    margin-top: 35px;
+    padding: 0;
+    color: #FFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-align: left;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    .footer {
+        padding: 28px 0;
+    }
+
+    .footer__container {
+        padding: 0 20px;
+    }
+
+    .footer__logo-desc {
+        margin-top: 28px;
+        width: 330px;
+        color:#FFF;
+        font-size: 14px;
+    }
+
+    .footer__logo-list {
+        margin-top: 25px;
+    }
+
+    .footer__list-wrapper {
+        margin-top: 70px ;
+        flex-wrap: wrap;
+        gap: 60px;
+    }
+
+    .footer__company-name {
+        text-align: center;
+    }
+}

@@ -1,0 +1,145 @@
+h2, h3, p {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: normal;
+}
+
+.field-section {
+    padding: 50px 0;
+    background-color: #051022;
+}
+
+.field-section__top-title {
+    color: #FFF;
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.field-section__top-desc {
+    width: 618px;
+    margin-bottom: 45px;
+    color: #959595;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.field-section__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.field-section__item {
+    width: 400px;
+    height: 350px;
+    padding: 70px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 32px;
+    background: #FCFBFB;
+}
+
+.field-section__item:hover .field-section__item-title {
+    color: #8C0F95;
+}
+
+.field-section__item:hover path {
+    transition: all 300ms linear;
+}
+
+.field-section__item:hover path {
+    fill: #8C0F95;
+}
+
+.field-section__item:hover .call .path1 {
+    fill: #8C0F95;
+    stroke: #8C0F95;
+}
+
+.field-section__item:hover .call .path2 {
+    fill: #FFF;
+    stroke: #8C0F95;
+}
+
+.field-section__item-title {
+    width: 171px;
+    margin-top: 13px;
+    color: #051022;
+    font-size: 24px;
+    font-weight: 600;
+    transition: all 300ms linear;
+}
+
+.field-section__item-desc {
+    width: 171px;
+    margin-top: 8px;
+    color:#7E8089;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    .field-section__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .field-section {
+        padding: 25px 0;
+    }
+
+    .field-section__top-title {
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .field-section__top-desc {
+        width: 292px;
+        margin-bottom: 24px;
+        font-size: 13px;
+    }
+
+    .field-section__list {
+        display: grid;
+        grid-template-columns: 165px 165px;
+        row-gap: 15px;
+        column-gap: 10px;
+    }
+
+    .field-section__item {
+        width: 165px;
+        height: 200px;
+        padding: 15px 0;
+        border-radius: 6px;
+    }
+
+    .field-section__item-title {
+        width: 129px;
+        margin-top: 12px;
+        font-size: 15px;
+    }
+
+    .field-section__item-desc {
+        width: 132px;
+        font-size: 12px;
+    }
+}

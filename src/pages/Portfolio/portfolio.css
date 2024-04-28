@@ -1,0 +1,105 @@
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-style: normal;
+    line-height: normal;
+}
+
+/******** PORTFOLIO HERO ********/
+
+.portfolio-hero {
+    padding: 90px 0;
+    background-image: url('../../assets/images/about-bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.portfolio-hero__title {
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.portfolio-hero__desc {
+    width: 582px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 148%;
+}
+
+/******** PORTFOLIO WORK ********/
+
+.portfolio-work {
+    padding: 60px;
+}
+
+.portfolio-work__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.portfolio-work__item:hover .portfolio-work__item-title {
+    color: #8C0F95;
+}
+
+.portfolio-work__item-img {
+    margin-bottom: 24px;
+}
+
+.portfolio-work__item-title {
+    margin-bottom: 12px;
+    text-align: left;
+    color:#051022;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 300ms linear;
+}
+
+.portfolio-work__item-desc {
+    text-align: left;
+    color:#959595;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    /******** PORTFOLIO HERO ********/
+
+    .portfolio-hero {
+        padding: 24px 0;
+    }
+
+    .portfolio-hero__title {
+        margin-bottom: 14px;
+        font-size: 16px;
+    }
+
+    .portfolio-hero__desc {
+        width: 290px;
+        font-size: 12px;
+    }
+
+    /******** PORTFOLIO WORK ********/
+
+    .portfolio-work {
+        padding: 16px;
+        overflow-x: hidden;
+    }
+
+    .portfolio-work__item-img {
+        margin-bottom: 16px;
+        width: 340px;
+        height: 210px;
+    }
+}

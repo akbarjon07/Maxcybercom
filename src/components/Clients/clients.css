@@ -1,0 +1,118 @@
+.clients-section {
+    padding-top: 20px;
+    padding-bottom: 100px;
+    background: #051022;
+}
+
+.clients-section__title {
+    margin: 0;
+    margin-bottom: 58px;
+    padding: 0;
+    color: var(--White-under, #FFF);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+div.highway-slider {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+div.highway-slider div.highway-barrier {
+    overflow: hidden;
+    position: relative;
+}
+
+div.highway-slider ul.highway-lane {
+    display: flex;
+    height: 100%;
+}
+
+div.highway-slider ul.highway-lane li.highway-car {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #051022;
+}
+
+@-webkit-keyframes translatestf {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-500%);
+    }
+}
+
+@keyframes translatestf {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-500%);
+    }
+}
+
+#stffull div.highway-barrier ul.highway-lane {
+    width: 100%;
+}
+
+#stffull div.highway-barrier ul.highway-lane li.highway-car {
+    -webkit-animation: translatestf 30s linear infinite;
+    animation: translatestf 30s linear infinite;
+}
+
+@-webkit-keyframes translateinfinite {
+    100% {
+        transform: translateX(calc(-180px * 12));
+    }
+}
+@keyframes translateinfinite {
+    100% {
+        transform: translateX(calc(-180px * 12));
+    }
+}
+
+#infinite div.highway-barrier::before,
+#infinite div.highway-barrier::after {
+    content: " ";
+    position: absolute;
+    z-index: 9;
+    width: 180px;
+    height: 100%;
+}
+
+#infinite div.highway-barrier ul.highway-lane {
+    width: calc(180px * 24);
+}
+
+#infinite div.highway-barrier ul.highway-lane li.highway-car {
+    width: 180px;
+    -webkit-animation: translateinfinite 25s linear infinite;
+    animation: translateinfinite 25s linear infinite;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .clients-section {
+        padding-top: 8px;
+        padding-bottom: 40px;
+    }
+
+    .clients-section__title {
+        margin-bottom: 34px;
+        font-size: 12px;
+    }
+
+    #infinite div.highway-barrier ul.highway-lane {
+        width: calc(120px * 24);
+    }
+}
