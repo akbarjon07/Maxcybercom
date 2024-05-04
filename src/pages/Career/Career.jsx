@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './career.css';
 import Career1 from '../../assets/images/culture-1.jpeg';
 import Career2 from '../../assets/images/culture-2.jpeg';
@@ -69,42 +70,48 @@ const Career = () => {
 
                 <ul className='position-section__list'>
                     <li className='position-section__item'>
-                        <img className='position-section__item-img' src={Edu} alt="img" width={355} height={209}/>
+                        <Link to='/job-apply'>
+                            <img className='position-section__item-img' src={Edu} alt="img" width={355} height={209}/>
 
-                        <h3 className='position-section__item-title'>Community Manager</h3>
+                            <h3 className='position-section__item-title'>Community Manager</h3>
 
-                        <p className='position-section__item-desc'>We are looking for a Community Manager with a lively mind and a creative approach to tasks, who is good at time  management, has an analytical mindset, is not afraid to make hypotheses and test them, and is focused on achieving ambitious goals.
-                        </p>
+                            <p className='position-section__item-desc'>We are looking for a Community Manager with a lively mind and a creative approach to tasks, who is good at time  management, has an analytical mindset, is not afraid to make hypotheses and test them, and is focused on achieving ambitious goals.
+                            </p>
 
-                        <button className='position-section__item-btn'>
-                            Apply
-                        </button>
+                            <button className='position-section__item-btn'>
+                                Apply
+                            </button>
+                        </Link>
                     </li>
 
                     <li className='position-section__item'>
-                        <img className='position-section__item-img' src={Edu} alt="img" width={355} height={209}/>
+                        <Link to='/job-apply'>
+                            <img className='position-section__item-img' src={Edu} alt="img" width={355} height={209}/>
 
-                        <h3 className='position-section__item-title'>Community Manager</h3>
+                            <h3 className='position-section__item-title'>Community Manager</h3>
 
-                        <p className='position-section__item-desc'>We are looking for a Community Manager with a lively mind and a creative approach to tasks, who is good at time  management, has an analytical mindset, is not afraid to make hypotheses and test them, and is focused on achieving ambitious goals.
-                        </p>
+                            <p className='position-section__item-desc'>We are looking for a Community Manager with a lively mind and a creative approach to tasks, who is good at time  management, has an analytical mindset, is not afraid to make hypotheses and test them, and is focused on achieving ambitious goals.
+                            </p>
 
-                        <button className='position-section__item-btn'>
-                            Apply
-                        </button>
+                            <button className='position-section__item-btn'>
+                                Apply
+                            </button>
+                        </Link>
                     </li>
 
                     <li className='position-section__item'>
-                        <img className='position-section__item-img' src={Edu} alt="img" width={355} height={209}/>
+                        <Link to='/job-apply'>
+                            <img className='position-section__item-img' src={Edu} alt="img" width={355} height={209}/>
 
-                        <h3 className='position-section__item-title'>Community Manager</h3>
+                            <h3 className='position-section__item-title'>Community Manager</h3>
 
-                        <p className='position-section__item-desc'>We are looking for a Community Manager with a lively mind and a creative approach to tasks, who is good at time  management, has an analytical mindset, is not afraid to make hypotheses and test them, and is focused on achieving ambitious goals.
-                        </p>
+                            <p className='position-section__item-desc'>We are looking for a Community Manager with a lively mind and a creative approach to tasks, who is good at time  management, has an analytical mindset, is not afraid to make hypotheses and test them, and is focused on achieving ambitious goals.
+                            </p>
 
-                        <button className='position-section__item-btn'>
-                            Apply
-                        </button>
+                            <button className='position-section__item-btn'>
+                                Apply
+                            </button>
+                        </Link>
                     </li>
                 </ul>
             </div>

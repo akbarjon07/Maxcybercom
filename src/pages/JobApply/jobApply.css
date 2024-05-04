@@ -1,0 +1,143 @@
+.job-apply__hero {
+    padding-top: 48px;
+    padding-bottom: 68px;
+}
+
+.job-apply__hero-title {
+    margin: 0;
+    margin-bottom: 24px;
+    padding: 0;
+    text-align: left;
+    color: var(--Text, #1D1D1F);
+    font-family: Montserrat;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.232px;
+}
+
+.job-apply__hero-desc {
+    margin: 0;
+    margin-bottom: 32px;
+    padding: 0;
+    width: 830px;
+    text-align: left;
+    color: var(--Text, #1D1D1F);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 120% */
+    letter-spacing: -0.232px;
+}
+
+.job-apply__hero-img {
+    width: 100%;
+    height: 100%;
+}
+
+.job-apply__description {
+    padding-bottom: 80px;
+}
+
+.job-apply__description-title {
+    margin: 0;
+    margin-bottom: 24px;
+    padding: 0;
+    text-align: left;
+    color: var(--Text-primary, #051022);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.job-apply__description-desc {
+    margin: 0;
+    margin-bottom: 32px;
+    padding: 0;
+    width: 795px;
+    text-align: left;
+    color: var(--Text-primary, #051022);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.job-apply__description-list {
+    margin: 0;
+    margin-bottom: 24px;
+    padding: 0;
+    list-style: inside;
+}
+
+.job-apply__description-item {
+    color: var(--Text-primary, #051022);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px; /* 156.25% */
+}
+
+.job-apply__description-item + .job-apply__description-item {
+    margin-top: 5px;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    .job-apply__hero {
+        padding-top: 24px;
+        padding-bottom: 32px;
+    }
+
+    .job-apply__hero-container {
+        padding: 0 20px;
+    }
+
+    .job-apply__hero-title {
+        font-size: 20px;
+    }
+
+    .job-apply__hero-desc {
+        margin-bottom: 12px;
+        width: 340px;
+        font-size: 15px;
+    }
+
+    .job-apply__hero-img {
+        width: 340px;
+        height: 178px;
+    }
+
+    .job-apply__description {
+        padding-bottom: 30px;
+    }
+
+    .job-apply__description-container {
+        padding: 0 20px;
+    }
+
+    .job-apply__description-title {
+        margin-bottom: 16px;
+        font-size: 20px;
+    }
+
+    .job-apply__description-desc {
+        margin-bottom: 16px;
+        width: 340px;
+        font-size: 15px;
+    }
+
+    .job-apply__description-list {
+        width: 340px;
+        margin-bottom: 16px;
+    }
+
+    .job-apply__description-item {
+        font-size: 15px;
+    }
+}

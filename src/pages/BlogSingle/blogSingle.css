@@ -1,0 +1,243 @@
+.blog-single__hero {
+    padding: 48px 0;
+}
+
+.blog-single__hero-title {
+    margin: 0;
+    margin-bottom: 48px;
+    padding: 0;
+    width: 598px;
+    color: var(--Text, #1D1D1F);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.232px;
+}
+
+.blog-single__hero-img {
+    width: 100%;
+    height: 100%;
+}
+
+.blog-single__content {
+    padding-bottom: 100px;
+}
+
+.blog-single__content-wrapper {
+    display: flex;
+}
+
+.blog-single__content-left {
+    width: 300px;
+}
+
+.blog-single__content-heading {
+    margin: 0;
+    margin-bottom: 24px;
+    padding: 0;
+    color: var(--Text, #1D1D1F);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.232px;
+}
+
+.blog-single__content-list {
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.blog-single__content-item {
+    padding: 15px;
+    color: var(--Text, #1D1D1F);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: -0.232px;
+    border-radius: 8px;
+    transition: all 300ms linear;
+}
+
+.blog-single__content-item:hover {
+    background: #EEF9FF;
+}
+
+.blog-single__share-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.blog-single__share-item + .blog-single__share-item {
+    margin-left: 20px;
+}
+
+svg circle {
+    transition: all 300ms linear;
+}
+
+svg path {
+    transition: all 300ms linear;
+}
+
+.blog-single__share-item:hover svg path {
+    fill: #fff;
+    fill-opacity: 1;
+}
+
+.blog-single__share-item:hover .telegram {
+    border: none;
+}
+
+.blog-single__share-item:hover .telegram circle {
+    fill: #2AABEE;
+}
+
+.blog-single__share-item:hover .skype circle {
+    fill: #00AFF0;
+}
+
+.blog-single__share-item:hover .whatsapp circle {
+    fill: #25D366;
+}
+
+.blog-single__content-right {
+    width: 100%;
+    margin-left: 40px;
+}
+
+.blog-single__content-right-desc {
+    margin: 0;
+    margin-bottom: 40px;
+    padding: 0;
+    text-align: justify;
+    color: var(--Text, #1D1D1F);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 120% */
+    letter-spacing: -0.232px;
+}
+
+.blog-single__content-right-title {
+    margin: 0;
+    margin-bottom: 40px;
+    padding: 0;
+    width: 735px;
+    text-align: left;
+    color: var(--Text, #1D1D1F);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.232px;
+}
+
+.blog-single__content-right-span {
+    margin-right: 24px;
+    display: inline-block;
+    width: 6px;
+    height: 125px;
+    background-color: #1E6EEB;
+}
+
+.margin-zero {
+   margin-bottom: 0;
+}
+
+.blog-single__content-right-img {
+    width: 100%;
+    margin: 40px 0;
+}
+
+.responsive-list-res {
+    display: none;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    .blog-single__hero {
+        padding: 24px 0;
+    }
+
+    .blog-single__hero-title {
+        margin-bottom: 14px;
+        width: 340px;
+        font-size: 20px;
+    }
+
+    .blog-single__hero-img {
+        width: 340px;
+        height: 178px;
+    }
+
+    .blog-single__content {
+        padding-bottom: 24px;
+    }
+
+    .blog-single__content-container {
+        padding: 0 20px;
+    }
+
+    .blog-single__content-wrapper {
+        flex-direction: column;
+    }
+
+    .blog-single__content-left {
+        width: 340px;
+    }
+
+    .blog-single__content-heading {
+        margin-bottom: 16px;
+    }
+
+    .blog-single__content-list {
+        margin-bottom: 12px;
+    }
+
+    .blog-single__content-right {
+        width: 340px;
+        margin-left: 0;
+    }
+
+    .blog-single__content-right-desc {
+        margin-bottom: 16px;
+        font-size: 14px;
+    }
+
+    .blog-single__content-right-title {
+        margin-bottom: 12px;
+        width: 340px;
+        font-size: 20px;
+    }
+
+    .blog-single__content-right-span {
+        margin-right: 14px;
+        height: 145px;
+    }
+
+    .margin-zero {
+        margin-bottom: 0;
+        width: 310px;
+    }
+
+    .blog-single__content-right-img {
+        width: 340px;
+        margin: 20px 0;
+    }
+
+    .responsive-list-res {
+        display: block;
+    }
+
+    .responsive-list {
+        display: none;
+    }
+}

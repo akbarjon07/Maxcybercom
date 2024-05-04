@@ -1,0 +1,133 @@
+.service-single__hero {
+    padding-top: 72px;
+    padding-bottom: 50px;
+}
+
+.service-single__hero-title {
+    margin: 0;
+    margin-bottom: 62px;
+    padding: 0;
+    color: #1D1D1F;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.232px;
+}
+
+.service-single__hero-img {
+    margin-bottom: 48px;
+    width: 100%;
+    height: 100%;
+}
+
+.service-single__hero-desc {
+    margin: 0;
+    padding: 0;
+    color: #1D1D1F;
+    text-align: left;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.232px;
+}
+
+.service-single__origin {
+    padding-bottom: 40px;
+}
+
+.service-single__origin-title {
+    margin: 0;
+    margin-bottom: 32px;
+    padding: 0;
+    text-align: left;
+    color: var(--Text, #1D1D1F);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.232px;
+}
+
+.service-single__origin-desc {
+    margin: 0;
+    margin-bottom: 24px;
+    padding: 0;
+    text-align: left;
+    color: var(--Text, #1D1D1F);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 120% */
+    letter-spacing: -0.232px;
+}
+
+.service-single__origin-list {
+    margin: 0;
+    margin-bottom: 64px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 239px 239px 239px 239px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+
+    .service-single__hero {
+       padding: 24px 0;
+    }
+
+    .service-single__hero-container {
+        padding: 0 20px;
+    }
+
+    .service-single__hero-title {
+        margin-bottom: 24px;
+        font-size: 20px;
+    }
+
+    .service-single__hero-img {
+        margin-bottom: 24px;
+        width: 340px;
+        height: 178px;
+    }
+
+    .service-single__hero-desc {
+        font-size: 15px;
+    }
+
+    .service-single__origin {
+        padding-bottom: 24px;
+    }
+
+    .service-single__origin-container {
+        padding: 0 20px;
+    }
+
+    .service-single__origin-title {
+        margin-bottom: 24px;
+        font-size: 20px;
+    }
+
+    .service-single__origin-desc {
+        margin-bottom: 12pxpx;
+        font-size: 15px;
+    }
+
+    .service-single__origin-list {
+        margin-bottom: 32px;
+        grid-template-columns: 160px 160px;
+        align-items: start;
+        justify-content: flex-start;
+        gap: 18px;
+    }
+
+    .service-single__origin-img {
+        width: 160px;
+        height: 190px;
+    }
+}

@@ -1,18 +1,16 @@
 import React from 'react';
 import "./header.css";
 import { useRef } from 'react';
-import Logo from "../../assets/images/Group 1.svg";
-import Logo1 from "../../assets/images/MAXCYBERCOM.svg";
 import {DropDown} from "../../components/DropDown/DropDown";
 import { NavLink, Link } from 'react-router-dom';
 
 const Header = () => {
 
-    const navRef = useRef();
+    const navRef = useRef()
 
-	const showNavbar = () => {
-		navRef.current.classList.toggle("block");
-	};
+    const showNavbar = () => {
+        navRef.current.classList.toggle('responsive-nav');
+    }
 
   return (
     <header className='header'>
@@ -69,8 +67,8 @@ const Header = () => {
             </div>
         </div>
 
-        <div className="container mx-auto">
-            <div className='header__bottom'>
+        <div className="header__bottom">
+            <div className='container mx-auto header__bottom-container'>
                 <Link className='flex items-center' to="/">
                     <svg width="166" height="24" viewBox="0 0 166 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="3.20996" y="3.16992" width="4.40224" height="4.40224" fill="#1048A9"/>
@@ -87,65 +85,67 @@ const Header = () => {
                     </svg>
                 </Link>
 
-                <ul ref={navRef} onClick={showNavbar} className='header__bottom-navbar flex items-center'>
-                    <li className='header__bottom-list-item flex items-center top'>
-                        <NavLink to='about' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                            Who we are?
-                        </NavLink>
-                    </li>
+                <nav ref={navRef} onClick={showNavbar} className='header__bottom-nav'>
+                    <ul className='header__bottom-list'>
+                        <li className='header__bottom-list-item flex items-center top'>
+                            <NavLink to='about' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
+                                Who we are?
+                            </NavLink>
+                        </li>
 
-                    <li className='header__bottom-list-item flex items-center'>
-                        <NavLink to='services' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                            Services
-                        </NavLink>
-                    </li>
+                        <li className='header__bottom-list-item flex items-center'>
+                            <NavLink to='services' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
+                                Services
+                            </NavLink>
+                        </li>
 
-                    <li className='header__bottom-list-item flex items-center'>
-                        <NavLink to='portfolio' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                            Works
-                        </NavLink>
-                    </li>
+                        <li className='header__bottom-list-item flex items-center'>
+                            <NavLink to='portfolio' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
+                                Works
+                            </NavLink>
+                        </li>
 
-                    <li className='header__bottom-list-item flex items-center'>
-                        <NavLink to='blogs' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                            Blogs
-                        </NavLink>
-                    </li>
+                        <li className='header__bottom-list-item flex items-center'>
+                            <NavLink to='blogs' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
+                                Blogs
+                            </NavLink>
+                        </li>
 
-                    <li className='header__bottom-list-item flex items-center'>
-                        <NavLink to='career' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                            Careers
-                        </NavLink>
-                    </li>
+                        <li className='header__bottom-list-item flex items-center'>
+                            <NavLink to='career' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
+                                Careers
+                            </NavLink>
+                        </li>
 
-                    <li>
-                        <div className='header__bottom-navbar-res-menu'>
-                            <div className='flex items-center justify-between'>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <rect x="3.20996" y="3.16992" width="4.40224" height="4.40224" fill="#1048A9"/>
-                                    <rect x="3.20996" y="16.377" width="4.40224" height="4.40224" fill="#1048A9"/>
-                                    <rect x="16.417" y="3.16992" width="4.40224" height="4.40224" fill="#1048A9"/>
-                                    <rect x="16.417" y="16.377" width="4.40224" height="4.40224" fill="#1048A9"/>
-                                    <rect x="12.0146" y="0.0517578" width="4.40224" height="4.40224" transform="rotate(45 12.0146 0.0517578)" fill="#1048A9"/>
-                                    <rect x="20.8135" y="8.85645" width="4.40224" height="4.40224" transform="rotate(45 20.8135 8.85645)" fill="#1048A9"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.2848 23.5435C22.263 23.6902 22.8674 23.5144 23.1909 23.1909C23.5144 22.8674 23.6902 22.263 23.5435 21.2848C23.4005 20.3315 22.9661 19.1449 22.2619 17.8001C21.7849 16.8892 21.1888 15.9145 20.4863 14.9013L19.9018 14.1697L20.8001 14.5875C23.6224 18.6448 24.7793 22.1213 23.4503 23.4503C21.4734 25.4273 14.7443 21.9034 8.42044 15.5796C2.09661 9.25572 -1.42726 2.52661 0.549679 0.549679C1.8096 -0.710239 4.99967 0.264062 8.78489 2.77347L9.10255 3.00361L9.49233 3.73732L8.47011 3.08825C7.68175 2.56781 6.92084 2.11564 6.19988 1.73809C4.85512 1.03387 3.66852 0.599529 2.71518 0.456516C1.73703 0.309777 1.13259 0.485575 0.809084 0.809084C0.485575 1.13259 0.309777 1.73703 0.456515 2.71518C0.59953 3.66852 1.03387 4.85512 1.73809 6.19989C3.14387 8.88435 5.58437 12.1229 8.73076 15.2692C11.8771 18.4156 15.1157 20.8561 17.8001 22.2619C19.1449 22.9661 20.3315 23.4005 21.2848 23.5435Z" fill="#1048A9"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.20015 1.73808C5.63196 1.44053 5.092 1.19116 4.58594 0.991593V0.533203C6.51468 1.25662 8.8853 2.68853 11.3727 4.65868V5.21934C9.54469 3.74639 7.77685 2.56376 6.20015 1.73808ZM18.2395 11.9686C19.9656 14.0295 21.3376 16.0346 22.2622 17.8001C22.9664 19.1449 23.4007 20.3315 23.5438 21.2848C23.6905 22.263 23.5147 22.8674 23.1912 23.1909C22.8677 23.5144 22.2632 23.6902 21.2851 23.5435C20.3318 23.4005 19.1451 22.9661 17.8004 22.2619C17.0794 21.8844 16.3185 21.4322 15.5302 20.9117L14.5079 20.2627L14.8977 20.9964L15.2154 21.2265C19.0006 23.7359 22.1907 24.7102 23.4506 23.4503C25.0828 21.8181 22.9653 16.9464 18.6181 11.738V11.9686H18.2395Z" fill="#1048A9"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6934 21.2072C13.5555 20.4311 12.3708 19.523 11.1734 18.5015L8.90137 20.7735L12.0142 23.8864L14.6934 21.2072Z" fill="#1048A9"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.48094 12.8057C4.45977 11.6074 3.5524 10.4219 2.77726 9.28369L0.0917969 11.9692L3.20465 15.082L5.48094 12.8057Z" fill="#1048A9"/>
-                                </svg>
-
-                                <button onClick={showNavbar} className='ml-[200px] block'>
+                        <li>
+                            <div className='header__bottom-btn header__bottom-btn-close postion'>
+                                <div className='flex items-center justify-between'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M16.3394 9.32245C16.7434 8.94589 16.7657 8.31312 16.3891 7.90911C16.0126 7.50509 15.3798 7.48283 14.9758 7.85938L12.0497 10.5866L9.32245 7.66048C8.94589 7.25647 8.31312 7.23421 7.90911 7.61076C7.50509 7.98731 7.48283 8.62008 7.85938 9.0241L10.5866 11.9502L7.66048 14.6775C7.25647 15.054 7.23421 15.6868 7.61076 16.0908C7.98731 16.4948 8.62008 16.5171 9.0241 16.1405L11.9502 13.4133L14.6775 16.3394C15.054 16.7434 15.6868 16.7657 16.0908 16.3891C16.4948 16.0126 16.5171 15.3798 16.1405 14.9758L13.4133 12.0497L16.3394 9.32245Z" fill="#051022"/>
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" fill="#051022"/>
+                                        <rect x="3.20996" y="3.16992" width="4.40224" height="4.40224" fill="#1048A9"/>
+                                        <rect x="3.20996" y="16.377" width="4.40224" height="4.40224" fill="#1048A9"/>
+                                        <rect x="16.417" y="3.16992" width="4.40224" height="4.40224" fill="#1048A9"/>
+                                        <rect x="16.417" y="16.377" width="4.40224" height="4.40224" fill="#1048A9"/>
+                                        <rect x="12.0146" y="0.0517578" width="4.40224" height="4.40224" transform="rotate(45 12.0146 0.0517578)" fill="#1048A9"/>
+                                        <rect x="20.8135" y="8.85645" width="4.40224" height="4.40224" transform="rotate(45 20.8135 8.85645)" fill="#1048A9"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M21.2848 23.5435C22.263 23.6902 22.8674 23.5144 23.1909 23.1909C23.5144 22.8674 23.6902 22.263 23.5435 21.2848C23.4005 20.3315 22.9661 19.1449 22.2619 17.8001C21.7849 16.8892 21.1888 15.9145 20.4863 14.9013L19.9018 14.1697L20.8001 14.5875C23.6224 18.6448 24.7793 22.1213 23.4503 23.4503C21.4734 25.4273 14.7443 21.9034 8.42044 15.5796C2.09661 9.25572 -1.42726 2.52661 0.549679 0.549679C1.8096 -0.710239 4.99967 0.264062 8.78489 2.77347L9.10255 3.00361L9.49233 3.73732L8.47011 3.08825C7.68175 2.56781 6.92084 2.11564 6.19988 1.73809C4.85512 1.03387 3.66852 0.599529 2.71518 0.456516C1.73703 0.309777 1.13259 0.485575 0.809084 0.809084C0.485575 1.13259 0.309777 1.73703 0.456515 2.71518C0.59953 3.66852 1.03387 4.85512 1.73809 6.19989C3.14387 8.88435 5.58437 12.1229 8.73076 15.2692C11.8771 18.4156 15.1157 20.8561 17.8001 22.2619C19.1449 22.9661 20.3315 23.4005 21.2848 23.5435Z" fill="#1048A9"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.20015 1.73808C5.63196 1.44053 5.092 1.19116 4.58594 0.991593V0.533203C6.51468 1.25662 8.8853 2.68853 11.3727 4.65868V5.21934C9.54469 3.74639 7.77685 2.56376 6.20015 1.73808ZM18.2395 11.9686C19.9656 14.0295 21.3376 16.0346 22.2622 17.8001C22.9664 19.1449 23.4007 20.3315 23.5438 21.2848C23.6905 22.263 23.5147 22.8674 23.1912 23.1909C22.8677 23.5144 22.2632 23.6902 21.2851 23.5435C20.3318 23.4005 19.1451 22.9661 17.8004 22.2619C17.0794 21.8844 16.3185 21.4322 15.5302 20.9117L14.5079 20.2627L14.8977 20.9964L15.2154 21.2265C19.0006 23.7359 22.1907 24.7102 23.4506 23.4503C25.0828 21.8181 22.9653 16.9464 18.6181 11.738V11.9686H18.2395Z" fill="#1048A9"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6934 21.2072C13.5555 20.4311 12.3708 19.523 11.1734 18.5015L8.90137 20.7735L12.0142 23.8864L14.6934 21.2072Z" fill="#1048A9"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.48094 12.8057C4.45977 11.6074 3.5524 10.4219 2.77726 9.28369L0.0917969 11.9692L3.20465 15.082L5.48094 12.8057Z" fill="#1048A9"/>
                                     </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
 
-                <div onClick={showNavbar} className='header__bottom-navbar-res block'>
+                                    <button className='ml-[200px]'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16.3394 9.32245C16.7434 8.94589 16.7657 8.31312 16.3891 7.90911C16.0126 7.50509 15.3798 7.48283 14.9758 7.85938L12.0497 10.5866L9.32245 7.66048C8.94589 7.25647 8.31312 7.23421 7.90911 7.61076C7.50509 7.98731 7.48283 8.62008 7.85938 9.0241L10.5866 11.9502L7.66048 14.6775C7.25647 15.054 7.23421 15.6868 7.61076 16.0908C7.98731 16.4948 8.62008 16.5171 9.0241 16.1405L11.9502 13.4133L14.6775 16.3394C15.054 16.7434 15.6868 16.7657 16.0908 16.3891C16.4948 16.0126 16.5171 15.3798 16.1405 14.9758L13.4133 12.0497L16.3394 9.32245Z" fill="#051022"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z" fill="#051022"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div onClick={showNavbar} className='header__bottom-btn'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M22 18.0048C22 18.5544 21.5544 19 21.0048 19H12.9952C12.4456 19 12 18.5544 12 18.0048C12 17.4552 12.4456 17.0096 12.9952 17.0096H21.0048C21.5544 17.0096 22 17.4552 22 18.0048Z" fill="black"/>
                         <path d="M22 12.0002C22 12.5499 21.5544 12.9954 21.0048 12.9954H2.99519C2.44556 12.9954 2 12.5499 2 12.0002C2 11.4506 2.44556 11.0051 2.99519 11.0051H21.0048C21.5544 11.0051 22 11.4506 22 12.0002Z" fill="black"/>
