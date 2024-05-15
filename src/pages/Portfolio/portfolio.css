@@ -40,10 +40,8 @@ h1, h2, h3, p {
 .portfolio-work__list {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
 }
 
@@ -53,6 +51,8 @@ h1, h2, h3, p {
 
 .portfolio-work__item-img {
     margin-bottom: 24px;
+    /* width: 373px;
+    height: 228px; */
 }
 
 .portfolio-work__item-title {
@@ -95,6 +95,13 @@ h1, h2, h3, p {
     .portfolio-work {
         padding: 16px;
         overflow-x: hidden;
+    }
+
+    .portfolio-work__list {
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-content: center;
+        row-gap: 20px;
     }
 
     .portfolio-work__item-img {

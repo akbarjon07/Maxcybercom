@@ -10,7 +10,7 @@ const ServiceSingle = () => {
   return (
     <main>
         <section className='service-single__hero'>
-            <div className="container mx-auto service-single__hero-container">
+            <div className="container service-single__hero-container">
                 <p className='service-single__hero-title'>Programming & Development</p>
 
                 <img className='service-single__hero-img' src={Bg} alt="img" width={1110} height={352}/>
@@ -28,7 +28,7 @@ const ServiceSingle = () => {
         </section>
 
         <section className='service-single__origin'>
-            <div className="container mx-auto service-single__origin-container">
+            <div className="container service-single__origin-container">
                 <h2 className='service-single__origin-title'>The Term Origin</h2>
 
                 <p className='service-single__origin-desc'>

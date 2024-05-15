@@ -10,7 +10,7 @@ import Travel from '../../assets/images/Travel.jpeg';
 const Industry = () => {
   return (
     <section className='industry-section'>
-        <div className="container mx-auto">
+        <div className="container">
             <h2 className='industry-section__title'>Our developing industries</h2>
 
             <div className='industry-section__list'>

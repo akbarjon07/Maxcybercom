@@ -4,9 +4,9 @@ import "./about.css";
 const About = () => {
   return (
     <section className='about-section'>
-        <div className="container mx-auto about-section__container">
+        <div className="container about-section__container">
             <div className='about-section__content'>
-                <h2 className='about-section__content-title'>Who we are ?</h2>
+                <h2 className='about-section__content-title'>Who we are <span style={{color:'#8C0F95'}}>?</span></h2>
 
                 <p className='about-section__content-desc'>MAXCYBERCOM team is a software engineering company driven by the idea of digital transformation and innovation that improve business processes. Our core engineering capabilities have been successfully implemented in various industries. We are here to provide real business value to our partners and customers through IT innovation MAXCYBERCOM team is a software engineering company driven by the idea of digital transformation and innovation that improve business processes. Our core engineering capabilities have been successfully implemented .</p>
 

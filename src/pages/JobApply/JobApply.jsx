@@ -6,7 +6,7 @@ const JobApply = () => {
   return (
     <main>
         <section className='job-apply__hero'>
-            <div className="container mx-auto job-apply__hero-container">
+            <div className="container job-apply__hero-container">
                 <h1 className='job-apply__hero-title'>Community Manager</h1>
 
                 <p className='job-apply__hero-desc'>We are looking for a Community Manager with a lively mind and a creative approach to tasks, who is good at time management, has an analytical mindset, is not afraid to make hypotheses and test them, and is focused on achieving ambitious goals.</p>
@@ -16,7 +16,7 @@ const JobApply = () => {
         </section>
 
         <section className='job-apply__description'>
-            <div className="container mx-auto job-apply__description-container">
+            <div className="container job-apply__description-container">
                 <h2 className='job-apply__description-title'>Who and where are we looking for:</h2>
 
                 <p className='job-apply__description-desc'>We are looking for a Community Manager with a lively mind and a creative approach to tasks, who is good at time management, has an analytical mindset, is not afraid to make hypotheses and test them, and is focused on achieving ambitious goals. The main task of the Community Manager is maintaining social networks, managing and developing the community around the brand and Mad Devs channels, communicating with subscribers. We are waiting for a person who will breathe even more life and vibe into our social networks and channels Mad Devs.
@@ -61,7 +61,7 @@ const JobApply = () => {
         </section>
 
         <section className='role-section'>
-            <div className="container mx-auto">
+            <div className="container">
                 <div className='role-section__wrapper'>
                     <h2 className='role-section__wrapper-title'>Join our team and embark on an exciting career journey with us.</h2>
 

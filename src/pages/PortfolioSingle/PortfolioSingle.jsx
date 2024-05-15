@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import './portfolioSingle.css';
 import Bg from '../../assets/images/port-bg.jpg';
 import Bg2 from '../../assets/images/port-bg2.jpg';

@@ -5,7 +5,7 @@ const BlogSingle = () => {
   return (
     <main>
         <section className='blog-single__hero'>
-            <div className="container mx-auto flex flex-col items-center justify-center">
+            <div className="container flex flex-col items-center justify-center">
                 <h1 className='blog-single__hero-title'>Dogfooding: Why Should You Test Your Own Products?</h1>
 
                 <img className='blog-single__hero-img' src={Bg} alt="img" width={1110} height={575}/>
@@ -13,7 +13,7 @@ const BlogSingle = () => {
         </section>
 
         <section className='blog-single__content'>
-            <div className="container mx-auto blog-single__content-container">
+            <div className="container blog-single__content-container">
                 <div className='blog-single__content-wrapper'>
                     <div className='blog-single__content-left'>
                         <div>

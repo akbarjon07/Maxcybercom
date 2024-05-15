@@ -4,7 +4,7 @@ import './contact.css';
 const Contact = () => {
   return (
     <section className='contact-section'>
-        <div className="container mx-auto contact-section__container">
+        <div className="container contact-section__container">
             <ul className='contact-section__list'>
                 <li className='contact-section__item'>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,7 @@ const Contact = () => {
                     <div className='contact-section__item-wrapper ml-[24px]'>
                         <p className='contact-section__item-desc'>Phone number</p>
 
-                        <p className='contact-section__item-data'>+998 90 253 77 53</p>
+                        <a href='tel:+998902537753' className='contact-section__item-data'>+998 90 253 77 53</a>
                     </div>
                 </li>
 
@@ -29,7 +29,7 @@ const Contact = () => {
                     <div className='contact-section__item-wrapper ml-[24px]'>
                         <p className='contact-section__item-desc'>Email address</p>
 
-                        <p className='contact-section__item-data'>info@maxcybercom.uz</p>
+                        <a href='mailto:info@maxcybercom.uz' className='contact-section__item-data'>info@maxcybercom.uz</a>
                     </div>
                 </li>
 

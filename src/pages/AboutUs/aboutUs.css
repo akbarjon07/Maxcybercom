@@ -35,10 +35,6 @@ h1, h2, h3, p {
 
 .about-company-section {
     padding: 80px 0;
-    background-image: url(../../assets/images/about-bg.svg);
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: top 260px right 2.5rem;
 }
 
 .about-company-section__top-wrapper {
@@ -64,6 +60,7 @@ h1, h2, h3, p {
 }
 
 .about-company-section__bottom-wrapper {
+    position: relative;
     margin-left: 20px;
 }
 
@@ -110,6 +107,18 @@ h1, h2, h3, p {
     background-color: #051022;
 }
 
+.about-company-section__bottom-span {
+    position: absolute;
+    top: -10px;
+    right: -25px;
+    z-index: -1;
+    display: block;
+    width: 115px;
+    height: 115px;
+    background-color: #376FFF;
+    border-radius: 500px;
+}
+
 /******** MISSION ********/
 
 
@@ -150,7 +159,6 @@ h1, h2, h3, p {
 
 .comment-section__main-wrapper {
     display: flex;
-    justify-content: space-between;
 }
 
 .comment-section__client-number {
@@ -171,6 +179,7 @@ h1, h2, h3, p {
 }
 
 .comment-section__comment-wrapper {
+    margin-left: 44px;
     padding: 30px;
     border: 1px solid rgba(126, 128, 137, 0.20);
     background: #FCFBFB;
@@ -218,7 +227,6 @@ h1, h2, h3, p {
 .team-section__main-wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .team-section__wrapper {
@@ -265,6 +273,10 @@ h1, h2, h3, p {
     font-weight: 400;
     line-height: 167.182%;
     text-align: left;
+}
+
+.top {
+    margin-left: 50px;
 }
 
 
@@ -346,6 +358,10 @@ h1, h2, h3, p {
         font-size: 16px;
         line-height: 30px;
     }
+    .about-company-section__bottom-span {
+        top: 330px;
+        right: -55px;
+    }
 
     /******** MISSION ********/
 
@@ -407,6 +423,7 @@ h1, h2, h3, p {
     }
 
     .comment-section__comment-wrapper {
+        margin-left: 0;
         margin-top: 20px;
         padding: 16px;
     }
@@ -478,5 +495,6 @@ h1, h2, h3, p {
 
     .top {
         margin-top: 20px;
+        margin-left: 0;
     }
 }

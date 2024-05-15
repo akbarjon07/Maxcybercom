@@ -1,5 +1,6 @@
 .footer {
-    padding: 50px 0;
+    padding-top: 50px;
+    padding-bottom: 20px;
     background-color: #051022;
 }
 
@@ -12,7 +13,16 @@
 .footer__list-wrapper {
     display: flex;
     align-items: center;
-    gap: 180px;
+    gap: 100px;
+}
+
+.footer__logo-name {
+    margin-left: 10px;
+    color: #1048A9;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
 }
 
 .footer__logo-desc {
@@ -101,7 +111,7 @@
 
 .footer__company-name {
     margin: 0;
-    margin-top: 35px;
+    margin-top: 20px;
     padding: 0;
     color: #FFF;
     font-size: 15px;
@@ -117,10 +127,6 @@
 
     .footer {
         padding: 28px 0;
-    }
-
-    .footer__container {
-        padding: 0 20px;
     }
 
     .footer__logo-desc {

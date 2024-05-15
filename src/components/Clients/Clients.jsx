@@ -6,7 +6,7 @@ import 'swiper/css';
 const Clients = () => {
   return (
     <section className='clients-section'>
-        <div className="container mx-auto">
+        <div className="container">
             <h2 className='clients-section__title'>Some of our trusted clients</h2>
         </div>
 

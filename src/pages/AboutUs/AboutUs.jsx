@@ -9,7 +9,7 @@ const AboutUs = () => {
   return (
     <main>
         <section className='about__hero-section'>
-            <div className="container mx-auto flex flex-col items-center justify-center">
+            <div className="container flex flex-col items-center justify-center">
                 <h1 className='about__hero-title'>About us</h1>
 
                 <p className='about__hero-desc'>He’s so similar to me. In person, we’re just weird and silly and stupid together.</p>
@@ -17,7 +17,7 @@ const AboutUs = () => {
         </section>
 
         <section className='about-company-section'>
-          <div className="container mx-auto about-company-section__container">
+          <div className="container about-company-section__container">
             <div className='about-company-section__top-wrapper'>
               <h2 className='about-company-section__top-title'>About company</h2>
 
@@ -42,6 +42,8 @@ const AboutUs = () => {
                   </ul>
 
                 <div className='about-company-section__bottom-qoute'>We are proud of our competencies and capabilities, and we aim to provide innovative solutions that enable our clients to stay ahead of their competitors and succeed in the ever-changing technological landscape.</div>
+
+                <span className='about-company-section__bottom-span'></span>
               </div>
             </div>
           </div>
@@ -76,7 +78,7 @@ const AboutUs = () => {
         </section>
 
         <section className='comment-section'>
-          <div className="container mx-auto">
+          <div className="container">
             <div className='comment-section__main-wrapper'>
               <div className='comment-section__client-number'>
                 <p className='comment-section__client-desc'><span>200+</span><br />Clients Already Served</p>

@@ -5,7 +5,7 @@ import Img from '../../assets/images/Government.jpeg'
 const Blogs = () => {
   return (
     <section className='blogs-section'>
-        <div className="container mx-auto">
+        <div className="container">
             <div className='blogs-section__title-wrapper flex items-center justify-center'>
                 <h2 className='blogs-section__title'>Blogs</h2>
 
@@ -28,11 +28,12 @@ const Blogs = () => {
 
                     <p className='blogs-section__item-desc'>It’s well understood that cloud costs are, for the most part, based upon consumption and are not normally amortized as capital expenses — as IT costs were for many decades prior...</p>
 
-                    <button className='blogs-section__item-btn flex'>
+                    <button className='blogs-section__item-btn flex items-center'>
                         Read
 
-                        <svg className='ml-[10px] bi bi-arrow-right-circle' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#8C0F95" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                        <svg className='ml-[10px]' xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                            <path d="M11.0858 7.75739L15.3284 12L11.0858 16.2427L9.67157 14.8285L12.5 12L9.67157 9.1716L11.0858 7.75739Z" fill="#8C0F95"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1ZM21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12Z" fill="#8C0F95"/>
                         </svg>
                     </button>
                 </li>
@@ -44,10 +45,12 @@ const Blogs = () => {
 
                     <p className='blogs-section__item-desc'>It’s well understood that cloud costs are, for the most part, based upon consumption and are not normally amortized as capital expenses — as IT costs were for many decades prior...</p>
 
-                    <button className='blogs-section__item-btn flex'>
+                    <button className='blogs-section__item-btn flex items-center'>
                         Read
-                        <svg className='ml-[10px] bi bi-arrow-right-circle' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#8C0F95" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+
+                        <svg className='ml-[10px]' xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                            <path d="M11.0858 7.75739L15.3284 12L11.0858 16.2427L9.67157 14.8285L12.5 12L9.67157 9.1716L11.0858 7.75739Z" fill="#8C0F95"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1ZM21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12Z" fill="#8C0F95"/>
                         </svg>
                     </button>
                 </li>
@@ -59,10 +62,12 @@ const Blogs = () => {
 
                     <p className='blogs-section__item-desc'>It’s well understood that cloud costs are, for the most part, based upon consumption and are not normally amortized as capital expenses — as IT costs were for many decades prior...</p>
 
-                    <button className='blogs-section__item-btn flex'>
+                    <button className='blogs-section__item-btn flex items-center'>
                         Read
-                        <svg className='ml-[10px] bi bi-arrow-right-circle' xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#8C0F95" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+
+                        <svg className='ml-[10px]' xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                            <path d="M11.0858 7.75739L15.3284 12L11.0858 16.2427L9.67157 14.8285L12.5 12L9.67157 9.1716L11.0858 7.75739Z" fill="#8C0F95"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1ZM21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12Z" fill="#8C0F95"/>
                         </svg>
                     </button>
                 </li>
