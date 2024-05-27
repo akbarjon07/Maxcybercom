@@ -1,19 +1,21 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from "react-i18next";
 import './blog.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 
 const Blogs = () => {
 
+    const { t } = useTranslation();
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const lang = localStorage.getItem('lang');
 
     useEffect(() => {
         const fetchData = async () => {
           try {
             setLoading(true)
-            const response = await fetch('https://backend.max.kube.uz/api/v1/page/by-page-type-code?pageTypeCode=3');
+            const response = await fetch(`https://backend.max.kube.uz/api/v1/page/by-page-type-code?pageTypeCode=3&lang=${lang}`);
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -27,7 +29,7 @@ const Blogs = () => {
         };
 
         fetchData();
-    }, []);
+    }, [lang]);
 
   return (
     <main>
@@ -38,7 +40,7 @@ const Blogs = () => {
           <>
             <section className='blog__hero-section'>
               <div className="container flex flex-col items-center justify-center">
-                  <h1 className='blog__hero-title'>Blogs</h1>
+                  <h1 className='blog__hero-title'>{t("blogs")}</h1>
 
                   <p className='blog__hero-desc'>He’s so similar to me. In person, we’re just weird and silly and stupid together.</p>
               </div>
@@ -50,8 +52,8 @@ const Blogs = () => {
                     {
                         data ? data.map((key => {
                             return (
-                            <li className='blog-section__item'>
-                                <Link to='/blog'>
+                            <li className='blog-section__item' key={key.id}>
+                                <Link to={`/blogs/${key.id}`}>
                                     <img className='blogs-section__item-img' src={key.image} alt="Img" width={355} height={261}/>
 
                                     <h4 className='blogs-section__item-title'>{key.title}</h4>
@@ -59,7 +61,7 @@ const Blogs = () => {
                                     <p className='blogs-section__item-desc'>{key.description}</p>
 
                                     <button className='blogs-section__item-btn flex items-center'>
-                                        Read
+                                      {t("read")}
 
                                         <svg className='ml-[10px]' xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
                                           <path d="M11.0858 7.75739L15.3284 12L11.0858 16.2427L9.67157 14.8285L12.5 12L9.67157 9.1716L11.0858 7.75739Z" fill="#8C0F95"/>

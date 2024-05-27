@@ -3,8 +3,11 @@ import "./header.css";
 import { useRef } from 'react';
 import { DropDown } from "../../components/DropDown/DropDown";
 import { NavLink, Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+
+    const { t } = useTranslation();
 
     const navRef = useRef()
 
@@ -70,7 +73,7 @@ const Header = () => {
         </div>
 
         <div className="header__bottom">
-            <div className='container mx-auto header__bottom-container'>
+            <div className='container header__bottom-container'>
                 <Link className='flex items-center' to="/">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <rect x="3.20996" y="3.16992" width="4.40224" height="4.40224" fill="#1048A9"/>
@@ -92,31 +95,31 @@ const Header = () => {
                     <ul className='header__bottom-list'>
                         <li className='header__bottom-list-item flex items-center top'>
                             <NavLink to='about' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                                Who we are?
+                            {t('who we are')}
                             </NavLink>
                         </li>
 
                         <li className='header__bottom-list-item flex items-center'>
                             <NavLink to='services' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                                Services
+                                {t('services')}
                             </NavLink>
                         </li>
 
                         <li className='header__bottom-list-item flex items-center'>
                             <NavLink to='portfolio' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                                Works
+                                {t('portfolio')}
                             </NavLink>
                         </li>
 
                         <li className='header__bottom-list-item flex items-center'>
                             <NavLink to='blogs' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                                Blogs
+                                {t('blogs')}
                             </NavLink>
                         </li>
 
                         <li className='header__bottom-list-item flex items-center'>
                             <NavLink to='career' className={({isActive}) => isActive ? "header__bottom-link-active header__bottom-link" : "header__bottom-link"}>
-                                Careers
+                                {t('careers')}
                             </NavLink>
                         </li>
 

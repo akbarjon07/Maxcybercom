@@ -1,15 +1,19 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 import "./contacts.css";
 import Contact from '../../components/Contact/Contact';
 
 const Contacts = () => {
+
+  const { t } = useTranslation();
+
   return (
     <main>
         <section className='contacts__hero-section'>
             <div className="container flex flex-col items-center justify-center">
-                <h1 className='contacts__hero-title'>Contact informations</h1>
+                <h1 className='contacts__hero-title'>{t("contact info")}</h1>
 
-                <p className='contacts__hero-desc'>He’s so similar to me. In person, we’re just weird and silly and stupid together.</p>
+                <p className='contacts__hero-desc'>{t("contact content")}</p>
             </div>
         </section>
 
@@ -17,7 +21,7 @@ const Contacts = () => {
 
         <section className='contacts__networks-section'>
             <div className="container flex flex-col items-center justify-center">
-                <h2 className='contacts__networks-title'>We are on social networks</h2>
+                <h2 className='contacts__networks-title'>{t("networks")}</h2>
 
                 <p className='contacts__networks-desc'>Lorem ipsum dolor sit amet consectetur. Libero neque donec etiam pretium nibh molestie scelerisque urna justo</p>
 
@@ -30,10 +34,10 @@ const Contacts = () => {
 
                         <h5 className='contacts__networks-item-title'>Linkedin</h5>
 
-                        <p className='contacts__networks-item-desc'>1234 followers</p>
+                        <p className='contacts__networks-item-desc'>1234 {t("follower")}</p>
 
                         <a className='contacts__networks-item-btn linkedin-btn' href="https://www.linkedin.com/in/maxcybercom" target='blank'>
-                            Follow
+                            {t("follow")}
                         </a>
                     </li>
 
@@ -59,9 +63,9 @@ const Contacts = () => {
 
                         <h5 className='contacts__networks-item-title'>Instagram</h5>
 
-                        <p className='contacts__networks-item-desc'>87 234 followers</p>
+                        <p className='contacts__networks-item-desc'>8734 {t("follower")}</p>
 
-                        <a className='contacts__networks-item-btn instagram-btn' href='https://www.instagram.com/' target='blank'>Follow</a>
+                        <a className='contacts__networks-item-btn instagram-btn' href='https://www.instagram.com/' target='blank'>{t("follow")}</a>
                     </li>
 
                     <li className='contacts__networks-item telegram'>
@@ -78,9 +82,9 @@ const Contacts = () => {
 
                         <h5 className='contacts__networks-item-title'>Telegram</h5>
 
-                        <p className='contacts__networks-item-desc'>1234 followers</p>
+                        <p className='contacts__networks-item-desc'>1234 {t("follower")}</p>
 
-                        <a className='contacts__networks-item-btn telegram-btn' href='https://t.me/your_username/maxcyber_com' target='blank'>Follow</a>
+                        <a className='contacts__networks-item-btn telegram-btn' href='https://t.me/your_username/maxcyber_com' target='blank'>{t("follow")}</a>
                     </li>
 
                     <li className='contacts__networks-item facebook'>
@@ -91,9 +95,9 @@ const Contacts = () => {
 
                         <h5 className='contacts__networks-item-title'>Facebook</h5>
 
-                        <p className='contacts__networks-item-desc'>1234 followers</p>
+                        <p className='contacts__networks-item-desc'>1234 {t("follower")}</p>
 
-                        <a className='contacts__networks-item-btn facebook-btn' href='https://www.facebook.com/' target='blank'>Follow</a>
+                        <a className='contacts__networks-item-btn facebook-btn' href='https://www.facebook.com/' target='blank'>{t("follow")}</a>
                     </li>
                 </ul>
             </div>
@@ -101,7 +105,7 @@ const Contacts = () => {
 
         <section className='contacts__networks-section'>
             <div className="container flex flex-col items-center justify-center">
-                <h2 className='contacts__networks-title'>Find us on map</h2>
+                <h2 className='contacts__networks-title'>{t("map title")}</h2>
 
                 <p className='contacts__networks-desc'>Lorem ipsum dolor sit amet consectetur. Libero neque donec etiam pretium nibh molestie scelerisque urna justo</p>
 

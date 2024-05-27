@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom';
 import './career.css';
 import Career1 from '../../assets/images/culture-1.jpeg';
@@ -10,14 +10,16 @@ import Loader from '../../components/Loader/Loader';
 
 const Career = () => {
 
+    const { t } = useTranslation();
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const lang = localStorage.getItem('lang');
 
     useEffect(() => {
         const fetchData = async () => {
           try {
             setLoading(true)
-            const response = await fetch('https://backend.max.kube.uz/api/v1/page/by-page-type-code?pageTypeCode=6');
+            const response = await fetch(`https://backend.max.kube.uz/api/v1/page/by-page-type-code?pageTypeCode=6&lang=${lang}`);
             if (!response.ok) {
               throw new Error('Network response was not ok');
             }
@@ -31,7 +33,7 @@ const Career = () => {
         };
 
         fetchData();
-    }, []);
+    }, [lang]);
 
 
   return (
@@ -43,7 +45,7 @@ const Career = () => {
                 <>
                     <section className='career-hero'>
                         <div className="container flex flex-col items-center justify-center">
-                            <h1 className='career-hero__title'>Work with us</h1>
+                            <h1 className='career-hero__title'>{t("careers")}</h1>
 
                             <p className='career-hero__desc'>He’s so similar to me. In person, we’re just weird and silly and stupid together.</p>
                         </div>
@@ -97,14 +99,14 @@ const Career = () => {
 
                     <section className='position-section'>
                         <div className="container position-section__container">
-                            <h2 className='position-section__title'>Open positions</h2>
+                            <h2 className='position-section__title'>{t("open positions")}</h2>
 
                             <ul className='position-section__list'>
                                 {
                                     data ? data.map((key)=> {
                                         return (
-                                            <li className='position-section__item'>
-                                                <Link to='/job-apply'>
+                                            <li className='position-section__item' key={key.id}>
+                                                <Link to={`/career/${key.id}`}>
                                                     <img className='position-section__item-img' src={key.image} alt="img" width={355} height={209}/>
 
                                                     <h3 className='position-section__item-title'>{key.title}</h3>
@@ -112,7 +114,7 @@ const Career = () => {
                                                     <p className='position-section__item-desc'>{key.description}</p>
 
                                                     <button className='position-section__item-btn flex items-center'>
-                                                        Apply
+                                                        {t("apply")}
 
                                                         <svg className='ml-[5px]' xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
                                                             <path d="M11.0858 7.75739L15.3284 12L11.0858 16.2427L9.67157 14.8285L12.5 12L9.67157 9.1716L11.0858 7.75739Z" fill="#8C0F95"/>

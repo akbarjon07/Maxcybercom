@@ -1,7 +1,11 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 import './contact.css';
 
 const Contact = () => {
+
+  const { t } = useTranslation();
+
   return (
     <section className='contact-section'>
         <div className="container contact-section__container">
@@ -13,7 +17,7 @@ const Contact = () => {
                     </svg>
 
                     <div className='contact-section__item-wrapper ml-[24px]'>
-                        <p className='contact-section__item-desc'>Phone number</p>
+                        <p className='contact-section__item-desc'>{t("phone")}</p>
 
                         <a href='tel:+998902537753' className='contact-section__item-data'>+998 90 253 77 53</a>
                     </div>
@@ -27,7 +31,7 @@ const Contact = () => {
 
 
                     <div className='contact-section__item-wrapper ml-[24px]'>
-                        <p className='contact-section__item-desc'>Email address</p>
+                        <p className='contact-section__item-desc'>{t("email")}</p>
 
                         <a href='mailto:info@maxcybercom.uz' className='contact-section__item-data'>info@maxcybercom.uz</a>
                     </div>
@@ -40,15 +44,15 @@ const Contact = () => {
                     </svg>
 
                     <div className='contact-section__item-wrapper ml-[24px]'>
-                        <p className='contact-section__item-desc'>Location</p>
+                        <p className='contact-section__item-desc'>{t("address")}</p>
 
-                        <p className='contact-section__item-data'>Uzbekistan, Tashkent, mirobod 51</p>
+                        <p className='contact-section__item-data'>Uzbekistan, Kokand, Guzar 12</p>
                     </div>
                 </li>
             </ul>
 
             <div className='contact-section__form-wrapper'>
-                <h4 className='contact-section__form-title'>Send message</h4>
+                <h4 className='contact-section__form-title'>{t("send message")}</h4>
 
                 <p className='contact-section__form-desc'>He’s so similar to me. In person, we’re just weird and silly and stupid together.</p>
 
@@ -61,7 +65,7 @@ const Contact = () => {
 
                     <textarea className='contact-section__form-message' placeholder='Your message' rows="10"></textarea>
 
-                    <button className='contact-section__form-btn'>Submit</button>
+                    <button className='contact-section__form-btn'>{t("send")}</button>
                 </form>
             </div>
         </div>

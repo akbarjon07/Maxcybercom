@@ -86,21 +86,24 @@
 .header__bottom-link {
     margin: 0;
     padding: 0;
+    padding-bottom: 5px;
     text-decoration: none;
     margin-right: 8px;
     color:#051022;
     font-size: 16px;
     font-weight: 600;
     line-height: 16px;
+    border-bottom: 1.5px solid transparent;
     transition: all 300ms linear;
 }
 
 .header__bottom-link:hover {
-    color: #8C0F95;
+    color: #1048A9;
 }
 
 .header__bottom-link-active {
-    color: #8C0F95;
+    color: #1048A9;
+    border-bottom: 1.5px solid #1048A9;
 }
 
 .header__bottom-btn {

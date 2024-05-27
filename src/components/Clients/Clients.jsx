@@ -1,18 +1,20 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useTranslation } from "react-i18next";
 import './clients.css';
-import 'swiper/css';
 
 const Clients = () => {
+
+  const { t } = useTranslation();
+
   return (
     <section className='clients-section'>
         <div className="container">
-            <h2 className='clients-section__title'>Some of our trusted clients</h2>
+            <h2 className='clients-section__title'>{t("clients")}</h2>
         </div>
 
         <div id="infinite" class="highway-slider">
-                <div class="container highway-barrier">
-                    <ul class="highway-lane">
+            <div class="container highway-barrier">
+                <ul class="highway-lane">
                         <li class="highway-car">
                             <svg className='clients-section__svg' xmlns="http://www.w3.org/2000/svg" width="91" height="36" viewBox="0 0 91 36" fill="none">
                                 <g clip-path="url(#clip0_127_931)">
@@ -250,8 +252,8 @@ const Clients = () => {
                             <path d="M137.769 29.6259V33.0744C137.769 33.6257 137.597 34.0601 137.252 34.3773C136.913 34.6946 136.428 34.8533 135.794 34.8533C135.356 34.8533 134.992 34.7831 134.704 34.6426C134.422 34.497 134.221 34.2967 134.102 34.0419C133.989 33.787 133.967 33.4853 134.036 33.1368L134.478 33.051C134.403 33.5243 134.472 33.8832 134.685 34.1277C134.904 34.3721 135.271 34.4944 135.785 34.4944C136.33 34.4944 136.719 34.3617 136.951 34.0965C137.183 33.8312 137.299 33.4619 137.299 32.9886V29.6259H137.769Z" fill="white"/>
                             </svg>
                         </li>
-                    </ul>
-                </div>
+                </ul>
+            </div>
         </div>
     </section>
   )

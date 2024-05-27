@@ -39,15 +39,25 @@ h2, h3, p {
 
 .field-section__item {
     padding: 70px 0;
+    border-radius: 32px;
+    background: #FCFBFB;
+    transition: all 300ms linear;
+}
+
+.field-section__item:hover {
+    background-color: #D9D9D9;
+    transform: scale(0.97);
+    box-shadow: 0px 0px 10px 0px rgba(219,210,219,1);
+}
+
+.field-section__item-link {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 32px;
-    background: #FCFBFB;
 }
 
-.field-section__item:hover .field-section__item-title {
+/* .field-section__item:hover .field-section__item-title {
     color: #8C0F95;
 }
 
@@ -67,11 +77,11 @@ h2, h3, p {
 .field-section__item:hover .call .path2 {
     fill: #FFF;
     stroke: #8C0F95;
-}
+} */
 
 .field-section__item-title {
     width: 171px;
-    margin-top: 24px;
+    margin-top: 32px;
     color: #051022;
     font-size: 24px;
     font-weight: 600;

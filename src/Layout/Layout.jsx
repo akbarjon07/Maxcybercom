@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Home from '../pages/Home/Home';
@@ -13,27 +13,41 @@ import PortfolioSingle from '../pages/PortfolioSingle/PortfolioSingle';
 import JobApply from '../pages/JobApply/JobApply';
 import BlogSingle from '../pages/BlogSingle/BlogSingle';
 import ServiceSingle from '../pages/ServiceSingle/ServiceSingle';
+import Loader from '../components/Loader/Loader';
 
 
 const Layout = () => {
+
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setLoading(true);
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [location]);
+
   return (
     <>
         <Header/>
-
+          {loading && <Loader />}
             <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='about' element={<AboutUs/>}/>
-                <Route path='contacts' element={<Contacts/>}/>
-                <Route path='services' element={<Services/>}/>
-                <Route path='service' element={<ServiceSingle/>}/>
-                <Route path='blogs' element={<Blog/>}/>
-                <Route path='blog' element={<BlogSingle/>}/>
-                <Route path='career' element={<Career/>}/>
-                <Route path='job-apply' element={<JobApply/>}/>
-                <Route path='portfolio' element={<Portfolio/>}/>
-                <Route path='work' element={<PortfolioSingle/>}/>
+              <Route path='/' element={<Home/>}/>
+              <Route path='about' element={<AboutUs/>}/>
+              <Route path='contacts' element={<Contacts/>}/>
+              <Route path='services' element={<Services/>}/>
+              <Route path='services/:id' element={<ServiceSingle/>}/>
+              <Route path='blogs' element={<Blog/>}/>
+              <Route path='blogs/:id' element={<BlogSingle/>}/>
+              <Route path='career' element={<Career/>}/>
+              <Route path='career/:id' element={<JobApply/>}/>
+              <Route path='portfolio' element={<Portfolio/>}/>
+              <Route path='portfolio/:id' element={<PortfolioSingle/>}/>
             </Routes>
-        <Outlet/>
         <Footer/>
     </>
   )

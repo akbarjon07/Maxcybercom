@@ -1,11 +1,15 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 import './start.css';
 
 const Start = () => {
+
+    const { t } = useTranslation();
+
   return (
     <section className='start-section'>
         <div className="container mx-auto">
-            <h2 className='start-section__title'>How we start</h2>
+            <h2 className='start-section__title'>{t('how we start')}</h2>
 
             <ul className='start-section__list'>
                 <li className='start-section__item'>
@@ -14,7 +18,7 @@ const Start = () => {
                     </svg>
 
                     <div>
-                        <h3 className='start-section__item-title'>Contact</h3>
+                        <h3 className='start-section__item-title'>{t('contact')}</h3>
 
                         <p className='start-section__item__desc'>Lorem ipsum dolor sit amet consectetur. Libero neque donec </p>
                     </div>
@@ -31,7 +35,7 @@ const Start = () => {
                     </svg>
 
                     <div>
-                        <h3 className='start-section__item-title'>Analysis</h3>
+                        <h3 className='start-section__item-title'>{t('analysis')}</h3>
 
                         <p className='start-section__item__desc'>Lorem ipsum dolor sit amet consectetur. Libero neque donec </p>
                     </div>
@@ -44,15 +48,14 @@ const Start = () => {
                     </svg>
 
                     <div>
-                        <h3 className='start-section__item-title'>Proposal</h3>
+                        <h3 className='start-section__item-title'>{t('proposal')}</h3>
 
                         <p className='start-section__item__desc'>Lorem ipsum dolor sit amet consectetur. Libero neque donec </p>
                     </div>
-
                 </li>
 
                 <li className='start-section__item'>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 56 56" fill="none">
                         <path d="M40.2101 35.7653C39.8223 33.1299 38.5026 30.7207 36.4905 28.9749C34.4785 27.2291 31.9073 26.2624 29.2435 26.25H26.7608C24.097 26.2624 21.5258 27.2291 19.5137 28.9749C17.5017 30.7207 16.182 33.1299 15.7941 35.7653L14.6041 44.086C14.5661 44.355 14.5912 44.6291 14.6775 44.8867C14.7638 45.1442 14.9088 45.3782 15.1011 45.57C15.5678 46.0367 18.4308 48.4167 28.0045 48.4167C37.5781 48.4167 40.4341 46.046 40.9078 45.57C41.1001 45.3782 41.2452 45.1442 41.3314 44.8867C41.4177 44.6291 41.4428 44.355 41.4048 44.086L40.2101 35.7653Z" fill="#8C0F95"/>
                         <path d="M17.6403 27.5336C15.3852 29.6125 13.9179 32.4069 13.487 35.4436L12.6236 41.417C5.69364 41.3703 3.59364 38.8503 3.24364 38.337C3.10835 38.1505 3.0118 37.9388 2.9597 37.7143C2.9076 37.4899 2.90101 37.2573 2.94031 37.0303L3.45364 34.137C3.72109 32.6248 4.34922 31.1995 5.28478 29.9818C6.22033 28.7641 7.43572 27.79 8.82789 27.142C10.2201 26.494 11.7479 26.1912 13.282 26.2594C14.8161 26.3276 16.3111 26.7647 17.6403 27.5336Z" fill="#8C0F95"/>
                         <path d="M53.0603 37.0303C53.0996 37.2573 53.0931 37.4899 53.041 37.7143C52.9889 37.9388 52.8923 38.1505 52.757 38.337C52.407 38.8503 50.307 41.3703 43.377 41.417L42.5137 35.4436C42.0827 32.4069 40.6154 29.6125 38.3604 27.5336C39.6895 26.7647 41.1846 26.3276 42.7186 26.2594C44.2527 26.1912 45.7806 26.494 47.1728 27.142C48.5649 27.79 49.7803 28.7641 50.7159 29.9818C51.6514 31.1995 52.2796 32.6248 52.547 34.137L53.0603 37.0303Z" fill="#8C0F95"/>
@@ -62,7 +65,7 @@ const Start = () => {
                     </svg>
 
                     <div>
-                        <h3 className='start-section__item-title'>Team</h3>
+                        <h3 className='start-section__item-title'>{t('team')}</h3>
 
                         <p className='start-section__item__desc'>Lorem ipsum dolor sit amet consectetur. Libero neque donec </p>
                     </div>
@@ -81,7 +84,7 @@ const Start = () => {
                     </svg>
 
                     <div>
-                        <h3 className='start-section__item-title'>Start</h3>
+                        <h3 className='start-section__item-title'>{t('start')}</h3>
 
                         <p className='start-section__item__desc'>Lorem ipsum dolor sit amet consectetur. Libero neque donec </p>
                     </div>

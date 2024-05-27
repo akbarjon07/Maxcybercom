@@ -1,146 +1,187 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Loader from '../../components/Loader/Loader';
 import './blogSingle.css';
 import Bg from '../../assets/images/blog-bg.jpeg';
+
 const BlogSingle = () => {
+
+    const { id } = useParams();
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const lang = localStorage.getItem('lang');
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            setLoading(true)
+            const response = await fetch(`https://backend.max.kube.uz/api/v1/section/by-page-id?pageId=${id}&lang=${lang}`);
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            const jsonData = await response.json();
+            console.log(jsonData);
+            setData(jsonData.data);
+            setLoading(false);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            setLoading(false);
+          }
+        };
+
+        fetchData();
+    }, [id, lang]);
+
+
   return (
     <main>
-        <section className='blog-single__hero'>
-            <div className="container flex flex-col items-center justify-center">
-                <h1 className='blog-single__hero-title'>Dogfooding: Why Should You Test Your Own Products?</h1>
+        {
+            loading ? (
+                <Loader/>
+            ) : (
+                <>
+                    {
+                        data.length ? data.map((key) => {
+                            return (
+                                <>
+                                    <section className='blog-single__hero'>
+                                        <div className="container flex flex-col items-center justify-center">
+                                            <h1 className='blog-single__hero-title'>{key.title}</h1>
 
-                <img className='blog-single__hero-img' src={Bg} alt="img" width={1110} height={575}/>
-            </div>
-        </section>
+                                            <img className='blog-single__hero-img' src={key.images[0]} alt="img" width={1110} height={575}/>
+                                        </div>
+                                    </section>
 
-        <section className='blog-single__content'>
-            <div className="container blog-single__content-container">
-                <div className='blog-single__content-wrapper'>
-                    <div className='blog-single__content-left'>
-                        <div>
-                            <div className='blog-single__content-heading'>Contents:</div>
+                                    <section className='blog-single__content'>
+                                        <div className="container blog-single__content-container">
+                                            <div className='blog-single__content-wrapper'>
+                                                <div className='blog-single__content-left'>
+                                                    <div>
+                                                        <div className='blog-single__content-heading'>Contents:</div>
 
-                            <ul className='blog-single__content-list'>
-                                <li className='blog-single__content-item'>1. Do We Use Dogfooding at Mad Devs?</li>
-                                <li className='blog-single__content-item'>2. Dogfooding Stages</li>
-                                <li className='blog-single__content-item'>3. Why Is Dogfooding   Needed and Whether It Is Needed, Indeed?</li>
-                            </ul>
-                        </div>
+                                                        <ul className='blog-single__content-list'>
+                                                            <li className='blog-single__content-item'>1. Do We Use Dogfooding at Mad Devs?</li>
+                                                            <li className='blog-single__content-item'>2. Dogfooding Stages</li>
+                                                            <li className='blog-single__content-item'>3. Why Is Dogfooding   Needed and Whether It Is Needed, Indeed?</li>
+                                                        </ul>
+                                                    </div>
 
-                        <div className='responsive-list'>
-                            <div className='blog-single__content-heading'>Share this post:</div>
+                                                    <div className='responsive-list'>
+                                                        <div className='blog-single__content-heading'>Share this post:</div>
 
-                            <ul className='blog-single__share-list'>
-                                <li className='blog-single__share-item'>
-                                    <svg className='telegram' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
-                                        <path d="M32.2647 12.4278C31.98 12.1909 31.6364 12.0357 31.2704 11.9786C30.9045 11.9215 30.5299 11.9647 30.1866 12.1036L12.2657 19.3389C11.8824 19.4966 11.5562 19.7671 11.3303 20.1145C11.1043 20.462 10.9894 20.8699 11.0008 21.2841C11.0121 21.6984 11.1492 22.0994 11.3937 22.434C11.6383 22.7685 11.9789 23.0208 12.3702 23.1573L15.9952 24.418L18.0157 31.0997C18.0431 31.1889 18.083 31.2739 18.134 31.352C18.1418 31.364 18.1527 31.373 18.161 31.3846C18.22 31.467 18.2913 31.5397 18.3724 31.6004C18.3955 31.618 18.4175 31.6345 18.4422 31.6501C18.5371 31.7131 18.6423 31.7591 18.7529 31.7862L18.7648 31.7872L18.7715 31.7901C18.838 31.8036 18.9057 31.8105 18.9736 31.8106C18.9802 31.8106 18.986 31.8074 18.9924 31.8073C19.0949 31.8055 19.1965 31.7879 19.2935 31.755C19.3161 31.7473 19.3355 31.7345 19.3574 31.7252C19.4297 31.6952 19.4983 31.6567 19.5617 31.6106C19.6124 31.5679 19.6631 31.5251 19.7139 31.4824L22.416 28.4991L26.4463 31.6211C26.8011 31.8974 27.2379 32.0475 27.6875 32.0479C28.1587 32.0473 28.6154 31.8847 28.9809 31.5874C29.3465 31.2901 29.5987 30.8762 29.6954 30.4151L32.958 14.3985C33.032 14.038 33.0065 13.6642 32.8844 13.3171C32.7623 12.9699 32.5481 12.6626 32.2647 12.4278ZM19.3702 24.7364C19.2315 24.8745 19.1367 25.0505 19.0977 25.2422L18.7882 26.7462L18.0041 24.1532L22.0694 22.0362L19.3702 24.7364ZM27.6719 30.0401L22.9092 26.3506C22.71 26.1966 22.46 26.1234 22.2092 26.1455C21.9583 26.1675 21.725 26.2833 21.5557 26.4697L20.6903 27.4249L20.9961 25.9385L28.0791 18.8555C28.2482 18.6867 28.3512 18.4628 28.3695 18.2246C28.3878 17.9864 28.3201 17.7495 28.1788 17.5568C28.0375 17.3641 27.8319 17.2285 27.5992 17.1743C27.3664 17.1202 27.122 17.1512 26.9102 17.2617L16.7449 22.5544L13.0205 21.1915L30.999 13.999L27.6719 30.0401Z" fill="#253042" fill-opacity="0.35"/>
-                                    </svg>
-                                </li>
+                                                        <ul className='blog-single__share-list'>
+                                                            <li className='blog-single__share-item'>
+                                                                <svg className='telegram' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
+                                                                    <path d="M32.2647 12.4278C31.98 12.1909 31.6364 12.0357 31.2704 11.9786C30.9045 11.9215 30.5299 11.9647 30.1866 12.1036L12.2657 19.3389C11.8824 19.4966 11.5562 19.7671 11.3303 20.1145C11.1043 20.462 10.9894 20.8699 11.0008 21.2841C11.0121 21.6984 11.1492 22.0994 11.3937 22.434C11.6383 22.7685 11.9789 23.0208 12.3702 23.1573L15.9952 24.418L18.0157 31.0997C18.0431 31.1889 18.083 31.2739 18.134 31.352C18.1418 31.364 18.1527 31.373 18.161 31.3846C18.22 31.467 18.2913 31.5397 18.3724 31.6004C18.3955 31.618 18.4175 31.6345 18.4422 31.6501C18.5371 31.7131 18.6423 31.7591 18.7529 31.7862L18.7648 31.7872L18.7715 31.7901C18.838 31.8036 18.9057 31.8105 18.9736 31.8106C18.9802 31.8106 18.986 31.8074 18.9924 31.8073C19.0949 31.8055 19.1965 31.7879 19.2935 31.755C19.3161 31.7473 19.3355 31.7345 19.3574 31.7252C19.4297 31.6952 19.4983 31.6567 19.5617 31.6106C19.6124 31.5679 19.6631 31.5251 19.7139 31.4824L22.416 28.4991L26.4463 31.6211C26.8011 31.8974 27.2379 32.0475 27.6875 32.0479C28.1587 32.0473 28.6154 31.8847 28.9809 31.5874C29.3465 31.2901 29.5987 30.8762 29.6954 30.4151L32.958 14.3985C33.032 14.038 33.0065 13.6642 32.8844 13.3171C32.7623 12.9699 32.5481 12.6626 32.2647 12.4278ZM19.3702 24.7364C19.2315 24.8745 19.1367 25.0505 19.0977 25.2422L18.7882 26.7462L18.0041 24.1532L22.0694 22.0362L19.3702 24.7364ZM27.6719 30.0401L22.9092 26.3506C22.71 26.1966 22.46 26.1234 22.2092 26.1455C21.9583 26.1675 21.725 26.2833 21.5557 26.4697L20.6903 27.4249L20.9961 25.9385L28.0791 18.8555C28.2482 18.6867 28.3512 18.4628 28.3695 18.2246C28.3878 17.9864 28.3201 17.7495 28.1788 17.5568C28.0375 17.3641 27.8319 17.2285 27.5992 17.1743C27.3664 17.1202 27.122 17.1512 26.9102 17.2617L16.7449 22.5544L13.0205 21.1915L30.999 13.999L27.6719 30.0401Z" fill="#253042" fill-opacity="0.35"/>
+                                                                </svg>
+                                                            </li>
 
-                                <li className='blog-single__share-item'>
-                                    <svg className='skype' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
-                                        <path d="M33.9904 13.9502C33.9906 13.7736 33.9439 13.6001 33.8551 13.4474C33.7663 13.2946 33.6387 13.1682 33.4852 13.0808C33.3316 12.9935 33.1577 12.9484 32.9811 12.9502C32.8045 12.9519 32.6315 13.0005 32.4797 13.0908C31.8944 13.4392 31.2642 13.706 30.6067 13.8838C29.6677 13.0781 28.47 12.6371 27.2327 12.6416C25.8753 12.6432 24.5716 13.1722 23.5969 14.117C22.6222 15.0618 22.0529 16.3484 22.0091 17.7051C19.333 17.2784 16.9077 15.8816 15.1955 13.7813C15.0924 13.6561 14.9606 13.5576 14.8114 13.494C14.6622 13.4304 14.4998 13.4037 14.3381 13.416C14.1765 13.4293 14.0205 13.4818 13.8837 13.5689C13.7469 13.656 13.6334 13.7752 13.5529 13.916C13.1405 14.6358 12.9036 15.4428 12.8615 16.2713C12.8194 17.0999 12.9733 17.9267 13.3107 18.6846L13.3088 18.6865C13.1571 18.7799 13.032 18.9107 12.9453 19.0663C12.8586 19.2218 12.8133 19.3971 12.8137 19.5752C12.8118 19.7221 12.8207 19.869 12.84 20.0146C12.9422 21.2729 13.4998 22.4507 14.4084 23.3271C14.3468 23.4446 14.3092 23.5731 14.2977 23.7052C14.2863 23.8373 14.3014 23.9704 14.342 24.0967C14.7381 25.3308 15.5805 26.3727 16.7043 27.0185C15.5625 27.46 14.3297 27.614 13.1145 27.4668C12.8895 27.4386 12.6617 27.4876 12.4683 27.6059C12.2749 27.7242 12.1275 27.9047 12.0502 28.1178C11.9729 28.3309 11.9703 28.5639 12.0428 28.7787C12.1154 28.9935 12.2588 29.1772 12.4495 29.2998C14.5396 30.646 16.9731 31.3617 19.4592 31.3613C22.2785 31.393 25.0292 30.4921 27.2835 28.7988C29.5377 27.1054 31.1692 24.7145 31.924 21.998C32.2771 20.8146 32.4574 19.5865 32.4592 18.3516C32.4592 18.2861 32.4592 18.2188 32.4582 18.1514C32.9803 17.5883 33.3848 16.9267 33.6479 16.2053C33.911 15.4839 34.0275 14.7172 33.9904 13.9502ZM30.6838 17.1621C30.5186 17.3575 30.435 17.6089 30.4504 17.8643C30.4602 18.0293 30.4592 18.1953 30.4592 18.3516C30.4571 19.3951 30.3042 20.4329 30.0051 21.4326C29.3886 23.744 28.0142 25.7817 26.1022 27.2192C24.1901 28.6568 21.8509 29.4111 19.4592 29.3613C18.6001 29.3616 17.7439 29.2606 16.9084 29.0606C17.9739 28.7172 18.97 28.1879 19.8508 27.4971C20.0131 27.3693 20.1318 27.1945 20.1907 26.9967C20.2497 26.7988 20.2459 26.5875 20.18 26.3918C20.1141 26.1961 19.9893 26.0257 19.8226 25.9038C19.656 25.7819 19.4557 25.7145 19.2492 25.7109C18.4181 25.698 17.6244 25.363 17.0354 24.7764C17.1848 24.7481 17.3332 24.7129 17.4807 24.6709C17.6967 24.6094 17.8857 24.477 18.0173 24.295C18.149 24.1131 18.2155 23.8921 18.2062 23.6677C18.197 23.4433 18.1125 23.2285 17.9664 23.058C17.8202 22.8874 17.6209 22.7711 17.4006 22.7275C16.9181 22.6323 16.4641 22.427 16.0739 22.1277C15.6837 21.8284 15.3677 21.4432 15.1506 21.002C15.3313 21.0266 15.5132 21.0419 15.6955 21.0479C15.9121 21.0511 16.1241 20.9854 16.3009 20.8603C16.4777 20.7351 16.6101 20.5569 16.6789 20.3516C16.7449 20.1443 16.7415 19.9212 16.6692 19.7161C16.597 19.511 16.4598 19.335 16.2785 19.2148C15.8387 18.9218 15.4784 18.5243 15.2299 18.0578C14.9814 17.5913 14.8525 17.0705 14.8547 16.542C14.8547 16.4756 14.8566 16.4092 14.8606 16.3438C17.1018 18.434 20.0089 19.6662 23.0696 19.8233C23.2241 19.8293 23.3779 19.8002 23.5195 19.7382C23.6611 19.6761 23.7868 19.5826 23.8869 19.4649C23.9861 19.346 24.0564 19.2057 24.0921 19.055C24.1278 18.9044 24.1281 18.7475 24.0929 18.5967C24.0358 18.3581 24.0066 18.1136 24.006 17.8682C24.0069 17.0127 24.3472 16.1925 24.9521 15.5876C25.557 14.9827 26.3772 14.6425 27.2326 14.6416C27.6728 14.6404 28.1084 14.7305 28.5119 14.9062C28.9155 15.0818 29.2783 15.3392 29.5773 15.6621C29.6927 15.7862 29.8378 15.8787 29.999 15.9309C30.1602 15.983 30.3321 15.993 30.4982 15.96C30.909 15.8801 31.3139 15.7724 31.7101 15.6377C31.4399 16.1907 31.0945 16.7037 30.6838 17.1621Z" fill="#253042" fill-opacity="0.35"/>
-                                    </svg>
-                                </li>
+                                                            <li className='blog-single__share-item'>
+                                                                <svg className='skype' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
+                                                                    <path d="M33.9904 13.9502C33.9906 13.7736 33.9439 13.6001 33.8551 13.4474C33.7663 13.2946 33.6387 13.1682 33.4852 13.0808C33.3316 12.9935 33.1577 12.9484 32.9811 12.9502C32.8045 12.9519 32.6315 13.0005 32.4797 13.0908C31.8944 13.4392 31.2642 13.706 30.6067 13.8838C29.6677 13.0781 28.47 12.6371 27.2327 12.6416C25.8753 12.6432 24.5716 13.1722 23.5969 14.117C22.6222 15.0618 22.0529 16.3484 22.0091 17.7051C19.333 17.2784 16.9077 15.8816 15.1955 13.7813C15.0924 13.6561 14.9606 13.5576 14.8114 13.494C14.6622 13.4304 14.4998 13.4037 14.3381 13.416C14.1765 13.4293 14.0205 13.4818 13.8837 13.5689C13.7469 13.656 13.6334 13.7752 13.5529 13.916C13.1405 14.6358 12.9036 15.4428 12.8615 16.2713C12.8194 17.0999 12.9733 17.9267 13.3107 18.6846L13.3088 18.6865C13.1571 18.7799 13.032 18.9107 12.9453 19.0663C12.8586 19.2218 12.8133 19.3971 12.8137 19.5752C12.8118 19.7221 12.8207 19.869 12.84 20.0146C12.9422 21.2729 13.4998 22.4507 14.4084 23.3271C14.3468 23.4446 14.3092 23.5731 14.2977 23.7052C14.2863 23.8373 14.3014 23.9704 14.342 24.0967C14.7381 25.3308 15.5805 26.3727 16.7043 27.0185C15.5625 27.46 14.3297 27.614 13.1145 27.4668C12.8895 27.4386 12.6617 27.4876 12.4683 27.6059C12.2749 27.7242 12.1275 27.9047 12.0502 28.1178C11.9729 28.3309 11.9703 28.5639 12.0428 28.7787C12.1154 28.9935 12.2588 29.1772 12.4495 29.2998C14.5396 30.646 16.9731 31.3617 19.4592 31.3613C22.2785 31.393 25.0292 30.4921 27.2835 28.7988C29.5377 27.1054 31.1692 24.7145 31.924 21.998C32.2771 20.8146 32.4574 19.5865 32.4592 18.3516C32.4592 18.2861 32.4592 18.2188 32.4582 18.1514C32.9803 17.5883 33.3848 16.9267 33.6479 16.2053C33.911 15.4839 34.0275 14.7172 33.9904 13.9502ZM30.6838 17.1621C30.5186 17.3575 30.435 17.6089 30.4504 17.8643C30.4602 18.0293 30.4592 18.1953 30.4592 18.3516C30.4571 19.3951 30.3042 20.4329 30.0051 21.4326C29.3886 23.744 28.0142 25.7817 26.1022 27.2192C24.1901 28.6568 21.8509 29.4111 19.4592 29.3613C18.6001 29.3616 17.7439 29.2606 16.9084 29.0606C17.9739 28.7172 18.97 28.1879 19.8508 27.4971C20.0131 27.3693 20.1318 27.1945 20.1907 26.9967C20.2497 26.7988 20.2459 26.5875 20.18 26.3918C20.1141 26.1961 19.9893 26.0257 19.8226 25.9038C19.656 25.7819 19.4557 25.7145 19.2492 25.7109C18.4181 25.698 17.6244 25.363 17.0354 24.7764C17.1848 24.7481 17.3332 24.7129 17.4807 24.6709C17.6967 24.6094 17.8857 24.477 18.0173 24.295C18.149 24.1131 18.2155 23.8921 18.2062 23.6677C18.197 23.4433 18.1125 23.2285 17.9664 23.058C17.8202 22.8874 17.6209 22.7711 17.4006 22.7275C16.9181 22.6323 16.4641 22.427 16.0739 22.1277C15.6837 21.8284 15.3677 21.4432 15.1506 21.002C15.3313 21.0266 15.5132 21.0419 15.6955 21.0479C15.9121 21.0511 16.1241 20.9854 16.3009 20.8603C16.4777 20.7351 16.6101 20.5569 16.6789 20.3516C16.7449 20.1443 16.7415 19.9212 16.6692 19.7161C16.597 19.511 16.4598 19.335 16.2785 19.2148C15.8387 18.9218 15.4784 18.5243 15.2299 18.0578C14.9814 17.5913 14.8525 17.0705 14.8547 16.542C14.8547 16.4756 14.8566 16.4092 14.8606 16.3438C17.1018 18.434 20.0089 19.6662 23.0696 19.8233C23.2241 19.8293 23.3779 19.8002 23.5195 19.7382C23.6611 19.6761 23.7868 19.5826 23.8869 19.4649C23.9861 19.346 24.0564 19.2057 24.0921 19.055C24.1278 18.9044 24.1281 18.7475 24.0929 18.5967C24.0358 18.3581 24.0066 18.1136 24.006 17.8682C24.0069 17.0127 24.3472 16.1925 24.9521 15.5876C25.557 14.9827 26.3772 14.6425 27.2326 14.6416C27.6728 14.6404 28.1084 14.7305 28.5119 14.9062C28.9155 15.0818 29.2783 15.3392 29.5773 15.6621C29.6927 15.7862 29.8378 15.8787 29.999 15.9309C30.1602 15.983 30.3321 15.993 30.4982 15.96C30.909 15.8801 31.3139 15.7724 31.7101 15.6377C31.4399 16.1907 31.0945 16.7037 30.6838 17.1621Z" fill="#253042" fill-opacity="0.35"/>
+                                                                </svg>
+                                                            </li>
 
-                                <li className='blog-single__share-item'>
-                                    <svg className='whatsapp' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
-                                        <path d="M27.6 23.9996C27.4 23.8996 26.1 23.2996 25.9 23.1996C25.7 23.0996 25.5 23.0996 25.3 23.2996C25.1 23.4996 24.7 24.0996 24.5 24.2996C24.4 24.4996 24.2 24.4996 24 24.3996C23.3 24.0996 22.6 23.6996 22 23.1996C21.5 22.6996 21 22.0996 20.6 21.4996C20.5 21.2996 20.6 21.0996 20.7 20.9996C20.8 20.8996 20.9 20.6996 21.1 20.5996C21.2 20.4996 21.3 20.2996 21.3 20.1996C21.4 20.0996 21.4 19.8996 21.3 19.7996C21.2 19.6996 20.7 18.4996 20.5 17.9996C20.4 17.2996 20.2 17.2996 20 17.2996C19.9 17.2996 19.7 17.2996 19.5 17.2996C19.3 17.2996 19 17.4996 18.9 17.5996C18.3 18.1996 18 18.8996 18 19.6996C18.1 20.5996 18.4 21.4996 19 22.2996C20.1 23.8996 21.5 25.1996 23.2 25.9996C23.7 26.1996 24.1 26.3996 24.6 26.4996C25.1 26.6996 25.6 26.6996 26.2 26.5996C26.9 26.4996 27.5 25.9996 27.9 25.3996C28.1 24.9996 28.1 24.5996 28 24.1996C28 24.1996 27.8 24.0996 27.6 23.9996ZM30.1 14.8996C26.2 10.9996 19.9 10.9996 16 14.8996C12.8 18.0996 12.2 22.9996 14.4 26.8996L13 31.9996L18.3 30.5996C19.8 31.3996 21.4 31.7996 23 31.7996C28.5 31.7996 32.9 27.3996 32.9 21.8996C33 19.2996 31.9 16.7996 30.1 14.8996ZM27.4 28.8996C26.1 29.6996 24.6 30.1996 23 30.1996C21.5 30.1996 20.1 29.7996 18.8 29.0996L18.5 28.8996L15.4 29.6996L16.2 26.6996L16 26.3996C13.6 22.3996 14.8 17.3996 18.7 14.8996C22.6 12.3996 27.6 13.6996 30 17.4996C32.4 21.3996 31.3 26.4996 27.4 28.8996Z" fill="#253042" fill-opacity="0.35"/>
-                                    </svg>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                                                            <li className='blog-single__share-item'>
+                                                                <svg className='whatsapp' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
+                                                                    <path d="M27.6 23.9996C27.4 23.8996 26.1 23.2996 25.9 23.1996C25.7 23.0996 25.5 23.0996 25.3 23.2996C25.1 23.4996 24.7 24.0996 24.5 24.2996C24.4 24.4996 24.2 24.4996 24 24.3996C23.3 24.0996 22.6 23.6996 22 23.1996C21.5 22.6996 21 22.0996 20.6 21.4996C20.5 21.2996 20.6 21.0996 20.7 20.9996C20.8 20.8996 20.9 20.6996 21.1 20.5996C21.2 20.4996 21.3 20.2996 21.3 20.1996C21.4 20.0996 21.4 19.8996 21.3 19.7996C21.2 19.6996 20.7 18.4996 20.5 17.9996C20.4 17.2996 20.2 17.2996 20 17.2996C19.9 17.2996 19.7 17.2996 19.5 17.2996C19.3 17.2996 19 17.4996 18.9 17.5996C18.3 18.1996 18 18.8996 18 19.6996C18.1 20.5996 18.4 21.4996 19 22.2996C20.1 23.8996 21.5 25.1996 23.2 25.9996C23.7 26.1996 24.1 26.3996 24.6 26.4996C25.1 26.6996 25.6 26.6996 26.2 26.5996C26.9 26.4996 27.5 25.9996 27.9 25.3996C28.1 24.9996 28.1 24.5996 28 24.1996C28 24.1996 27.8 24.0996 27.6 23.9996ZM30.1 14.8996C26.2 10.9996 19.9 10.9996 16 14.8996C12.8 18.0996 12.2 22.9996 14.4 26.8996L13 31.9996L18.3 30.5996C19.8 31.3996 21.4 31.7996 23 31.7996C28.5 31.7996 32.9 27.3996 32.9 21.8996C33 19.2996 31.9 16.7996 30.1 14.8996ZM27.4 28.8996C26.1 29.6996 24.6 30.1996 23 30.1996C21.5 30.1996 20.1 29.7996 18.8 29.0996L18.5 28.8996L15.4 29.6996L16.2 26.6996L16 26.3996C13.6 22.3996 14.8 17.3996 18.7 14.8996C22.6 12.3996 27.6 13.6996 30 17.4996C32.4 21.3996 31.3 26.4996 27.4 28.8996Z" fill="#253042" fill-opacity="0.35"/>
+                                                                </svg>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
 
-                    <div className='blog-single__content-right'>
-                        <p className='blog-single__content-right-desc'>
-                            Dogfooding, eating your own dog’s food - this expression sounds strange. What connection does it have with IT? Do developers eat dog food?
-                            <br /><br />
-                            Well, no. Dogfooding is not about eating dog food. This expression is used for a common practice in many companies including those that develop software.
-                            <br /><br />
-                            Dogfooding, or eating your own dog food, means using one’s own product. Some history of the expression might help you to understand it better.
-                        </p>
+                                                <div className='blog-single__content-right'>
+                                                    <p className='blog-single__content-right-desc'>{key.description}</p>
 
-                        <h2 className='blog-single__content-right-title'>The Term Origin</h2>
+                                                    <h2 className='blog-single__content-right-title'>The Term Origin</h2>
 
-                        <p className='blog-single__content-right-desc'>
-                            One of the possible origins of the expression is from the president of Kal Kan Pet Food. He said at a meeting with stakeholders that he could eat his dog food.
-                            <br /><br />
-                            While there were other options such as “icecreaming” (Microsoft), or “drinking your own champagne” (Pegasystems), nothing stuck. There were also such expressions as “the practice you preach”, or “you make your bed, you lie in it”. But dogfooding was new, crude, and something that stays in mind.
-                            <br /><br />
-                            In 1988, Paul Maritz, a Microsoft manager, sent a test manager an email titled “Eating our own Dogfood” with a request to increase the internal use of the company’s product. They even named a server “dogfood” for the staff to use.
-                            <br /><br />
-                            Since then, the expression has been used for the practice when a team uses the product they are working on.
-                        </p>
+                                                    <p className='blog-single__content-right-desc'>
+                                                        One of the possible origins of the expression is from the president of Kal Kan Pet Food. He said at a meeting with stakeholders that he could eat his dog food.
+                                                        <br /><br />
+                                                        While there were other options such as “icecreaming” (Microsoft), or “drinking your own champagne” (Pegasystems), nothing stuck. There were also such expressions as “the practice you preach”, or “you make your bed, you lie in it”. But dogfooding was new, crude, and something that stays in mind.
+                                                        <br /><br />
+                                                        In 1988, Paul Maritz, a Microsoft manager, sent a test manager an email titled “Eating our own Dogfood” with a request to increase the internal use of the company’s product. They even named a server “dogfood” for the staff to use.
+                                                        <br /><br />
+                                                        Since then, the expression has been used for the practice when a team uses the product they are working on.
+                                                    </p>
 
-                        <h2 className='blog-single__content-right-title'>Dogfooding and not Supporting Competitors Are Different Things</h2>
+                                                    <h2 className='blog-single__content-right-title'>Dogfooding and not Supporting Competitors Are Different Things</h2>
 
-                        <p className='blog-single__content-right-desc'>
-                            Before we move on, we shall understand the difference between dogfooding and the policy of not supporting competitors. So, when a car dealer encourages its employees to use the cars of the brand they sell only, it is not dogfooding. Or if CocaCola forbids its employees drinking Pepsi in offices, it is also not dogfooding.
-                            <br /><br />
-                            What is the difference then between dogfooding and forbidding the use of the products of competitors?
-                        </p>
+                                                    <p className='blog-single__content-right-desc'>
+                                                        Before we move on, we shall understand the difference between dogfooding and the policy of not supporting competitors. So, when a car dealer encourages its employees to use the cars of the brand they sell only, it is not dogfooding. Or if CocaCola forbids its employees drinking Pepsi in offices, it is also not dogfooding.
+                                                        <br /><br />
+                                                        What is the difference then between dogfooding and forbidding the use of the products of competitors?
+                                                    </p>
 
-                        <div className='flex items-center'>
-                            <span className='blog-single__content-right-span'></span>
+                                                    <div className='flex items-center'>
+                                                        <span className='blog-single__content-right-span'></span>
 
-                            <p className='blog-single__content-right-desc margin-zero'>
-                                The difference is in the approach.
-                                <br /><br />
-                                Dogfooding is when you use the product you are working on to see how it works, to test it. It doesn’t imply that you are forbidden to use the products of a different company or a different department.
-                            </p>
-                        </div>
+                                                        <p className='blog-single__content-right-desc margin-zero'>
+                                                            The difference is in the approach.
+                                                            <br /><br />
+                                                            Dogfooding is when you use the product you are working on to see how it works, to test it. It doesn’t imply that you are forbidden to use the products of a different company or a different department.
+                                                        </p>
+                                                    </div>
 
-                        <img className='blog-single__content-right-img' src={Bg} alt="img" width={827} height={542}/>
+                                                    <img className='blog-single__content-right-img' src={Bg} alt="img" width={827} height={542}/>
 
-                        <p className='blog-single__content-right-desc'>
-                            You do it because you need to see how it works in a real-time application, to check whether there are any bugs, any functionalities that shall be fixed, or whatever.
-                            <br /><br />
-                            So, the aim of dogfooding is to test the product and to demonstrate the company’s confidence in the things they do, not to forbid the use of other products.
-                            <br /><br />
-                            Examples of dogfooding? There are plenty of them:
-                            <br /><br />
-                            The Microsoft staff using Microsoft products;
-                            Apple employees carrying their MacBooks around;
-                            Zoom staff using Zoom for meetings;
-                            Oracle developers use Oracle Linux to develop Oracle (it sounds weird, doesn’t it?);
-                            Gmail was dogfood.
-                            Facebook React feature is also a result of dogfooding;
-                            Whenever a company turns their employees into their clients - it is dogfooding.
-                        </p>
+                                                    <p className='blog-single__content-right-desc'>
+                                                        You do it because you need to see how it works in a real-time application, to check whether there are any bugs, any functionalities that shall be fixed, or whatever.
+                                                        <br /><br />
+                                                        So, the aim of dogfooding is to test the product and to demonstrate the company’s confidence in the things they do, not to forbid the use of other products.
+                                                        <br /><br />
+                                                        Examples of dogfooding? There are plenty of them:
+                                                        <br /><br />
+                                                        The Microsoft staff using Microsoft products;
+                                                        Apple employees carrying their MacBooks around;
+                                                        Zoom staff using Zoom for meetings;
+                                                        Oracle developers use Oracle Linux to develop Oracle (it sounds weird, doesn’t it?);
+                                                        Gmail was dogfood.
+                                                        Facebook React feature is also a result of dogfooding;
+                                                        Whenever a company turns their employees into their clients - it is dogfooding.
+                                                    </p>
 
-                        <div className='responsive-list-res'>
-                            <div className='blog-single__content-heading'>Share this post:</div>
+                                                    <div className='responsive-list-res'>
+                                                        <div className='blog-single__content-heading'>Share this post:</div>
 
-                            <ul className='blog-single__share-list'>
-                                <li className='blog-single__share-item'>
-                                    <svg className='telegram' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
-                                        <path d="M32.2647 12.4278C31.98 12.1909 31.6364 12.0357 31.2704 11.9786C30.9045 11.9215 30.5299 11.9647 30.1866 12.1036L12.2657 19.3389C11.8824 19.4966 11.5562 19.7671 11.3303 20.1145C11.1043 20.462 10.9894 20.8699 11.0008 21.2841C11.0121 21.6984 11.1492 22.0994 11.3937 22.434C11.6383 22.7685 11.9789 23.0208 12.3702 23.1573L15.9952 24.418L18.0157 31.0997C18.0431 31.1889 18.083 31.2739 18.134 31.352C18.1418 31.364 18.1527 31.373 18.161 31.3846C18.22 31.467 18.2913 31.5397 18.3724 31.6004C18.3955 31.618 18.4175 31.6345 18.4422 31.6501C18.5371 31.7131 18.6423 31.7591 18.7529 31.7862L18.7648 31.7872L18.7715 31.7901C18.838 31.8036 18.9057 31.8105 18.9736 31.8106C18.9802 31.8106 18.986 31.8074 18.9924 31.8073C19.0949 31.8055 19.1965 31.7879 19.2935 31.755C19.3161 31.7473 19.3355 31.7345 19.3574 31.7252C19.4297 31.6952 19.4983 31.6567 19.5617 31.6106C19.6124 31.5679 19.6631 31.5251 19.7139 31.4824L22.416 28.4991L26.4463 31.6211C26.8011 31.8974 27.2379 32.0475 27.6875 32.0479C28.1587 32.0473 28.6154 31.8847 28.9809 31.5874C29.3465 31.2901 29.5987 30.8762 29.6954 30.4151L32.958 14.3985C33.032 14.038 33.0065 13.6642 32.8844 13.3171C32.7623 12.9699 32.5481 12.6626 32.2647 12.4278ZM19.3702 24.7364C19.2315 24.8745 19.1367 25.0505 19.0977 25.2422L18.7882 26.7462L18.0041 24.1532L22.0694 22.0362L19.3702 24.7364ZM27.6719 30.0401L22.9092 26.3506C22.71 26.1966 22.46 26.1234 22.2092 26.1455C21.9583 26.1675 21.725 26.2833 21.5557 26.4697L20.6903 27.4249L20.9961 25.9385L28.0791 18.8555C28.2482 18.6867 28.3512 18.4628 28.3695 18.2246C28.3878 17.9864 28.3201 17.7495 28.1788 17.5568C28.0375 17.3641 27.8319 17.2285 27.5992 17.1743C27.3664 17.1202 27.122 17.1512 26.9102 17.2617L16.7449 22.5544L13.0205 21.1915L30.999 13.999L27.6719 30.0401Z" fill="#253042" fill-opacity="0.35"/>
-                                    </svg>
-                                </li>
+                                                        <ul className='blog-single__share-list'>
+                                                            <li className='blog-single__share-item'>
+                                                                <svg className='telegram' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
+                                                                    <path d="M32.2647 12.4278C31.98 12.1909 31.6364 12.0357 31.2704 11.9786C30.9045 11.9215 30.5299 11.9647 30.1866 12.1036L12.2657 19.3389C11.8824 19.4966 11.5562 19.7671 11.3303 20.1145C11.1043 20.462 10.9894 20.8699 11.0008 21.2841C11.0121 21.6984 11.1492 22.0994 11.3937 22.434C11.6383 22.7685 11.9789 23.0208 12.3702 23.1573L15.9952 24.418L18.0157 31.0997C18.0431 31.1889 18.083 31.2739 18.134 31.352C18.1418 31.364 18.1527 31.373 18.161 31.3846C18.22 31.467 18.2913 31.5397 18.3724 31.6004C18.3955 31.618 18.4175 31.6345 18.4422 31.6501C18.5371 31.7131 18.6423 31.7591 18.7529 31.7862L18.7648 31.7872L18.7715 31.7901C18.838 31.8036 18.9057 31.8105 18.9736 31.8106C18.9802 31.8106 18.986 31.8074 18.9924 31.8073C19.0949 31.8055 19.1965 31.7879 19.2935 31.755C19.3161 31.7473 19.3355 31.7345 19.3574 31.7252C19.4297 31.6952 19.4983 31.6567 19.5617 31.6106C19.6124 31.5679 19.6631 31.5251 19.7139 31.4824L22.416 28.4991L26.4463 31.6211C26.8011 31.8974 27.2379 32.0475 27.6875 32.0479C28.1587 32.0473 28.6154 31.8847 28.9809 31.5874C29.3465 31.2901 29.5987 30.8762 29.6954 30.4151L32.958 14.3985C33.032 14.038 33.0065 13.6642 32.8844 13.3171C32.7623 12.9699 32.5481 12.6626 32.2647 12.4278ZM19.3702 24.7364C19.2315 24.8745 19.1367 25.0505 19.0977 25.2422L18.7882 26.7462L18.0041 24.1532L22.0694 22.0362L19.3702 24.7364ZM27.6719 30.0401L22.9092 26.3506C22.71 26.1966 22.46 26.1234 22.2092 26.1455C21.9583 26.1675 21.725 26.2833 21.5557 26.4697L20.6903 27.4249L20.9961 25.9385L28.0791 18.8555C28.2482 18.6867 28.3512 18.4628 28.3695 18.2246C28.3878 17.9864 28.3201 17.7495 28.1788 17.5568C28.0375 17.3641 27.8319 17.2285 27.5992 17.1743C27.3664 17.1202 27.122 17.1512 26.9102 17.2617L16.7449 22.5544L13.0205 21.1915L30.999 13.999L27.6719 30.0401Z" fill="#253042" fill-opacity="0.35"/>
+                                                                </svg>
+                                                            </li>
 
-                                <li className='blog-single__share-item'>
-                                    <svg className='skype' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
-                                        <path d="M33.9904 13.9502C33.9906 13.7736 33.9439 13.6001 33.8551 13.4474C33.7663 13.2946 33.6387 13.1682 33.4852 13.0808C33.3316 12.9935 33.1577 12.9484 32.9811 12.9502C32.8045 12.9519 32.6315 13.0005 32.4797 13.0908C31.8944 13.4392 31.2642 13.706 30.6067 13.8838C29.6677 13.0781 28.47 12.6371 27.2327 12.6416C25.8753 12.6432 24.5716 13.1722 23.5969 14.117C22.6222 15.0618 22.0529 16.3484 22.0091 17.7051C19.333 17.2784 16.9077 15.8816 15.1955 13.7813C15.0924 13.6561 14.9606 13.5576 14.8114 13.494C14.6622 13.4304 14.4998 13.4037 14.3381 13.416C14.1765 13.4293 14.0205 13.4818 13.8837 13.5689C13.7469 13.656 13.6334 13.7752 13.5529 13.916C13.1405 14.6358 12.9036 15.4428 12.8615 16.2713C12.8194 17.0999 12.9733 17.9267 13.3107 18.6846L13.3088 18.6865C13.1571 18.7799 13.032 18.9107 12.9453 19.0663C12.8586 19.2218 12.8133 19.3971 12.8137 19.5752C12.8118 19.7221 12.8207 19.869 12.84 20.0146C12.9422 21.2729 13.4998 22.4507 14.4084 23.3271C14.3468 23.4446 14.3092 23.5731 14.2977 23.7052C14.2863 23.8373 14.3014 23.9704 14.342 24.0967C14.7381 25.3308 15.5805 26.3727 16.7043 27.0185C15.5625 27.46 14.3297 27.614 13.1145 27.4668C12.8895 27.4386 12.6617 27.4876 12.4683 27.6059C12.2749 27.7242 12.1275 27.9047 12.0502 28.1178C11.9729 28.3309 11.9703 28.5639 12.0428 28.7787C12.1154 28.9935 12.2588 29.1772 12.4495 29.2998C14.5396 30.646 16.9731 31.3617 19.4592 31.3613C22.2785 31.393 25.0292 30.4921 27.2835 28.7988C29.5377 27.1054 31.1692 24.7145 31.924 21.998C32.2771 20.8146 32.4574 19.5865 32.4592 18.3516C32.4592 18.2861 32.4592 18.2188 32.4582 18.1514C32.9803 17.5883 33.3848 16.9267 33.6479 16.2053C33.911 15.4839 34.0275 14.7172 33.9904 13.9502ZM30.6838 17.1621C30.5186 17.3575 30.435 17.6089 30.4504 17.8643C30.4602 18.0293 30.4592 18.1953 30.4592 18.3516C30.4571 19.3951 30.3042 20.4329 30.0051 21.4326C29.3886 23.744 28.0142 25.7817 26.1022 27.2192C24.1901 28.6568 21.8509 29.4111 19.4592 29.3613C18.6001 29.3616 17.7439 29.2606 16.9084 29.0606C17.9739 28.7172 18.97 28.1879 19.8508 27.4971C20.0131 27.3693 20.1318 27.1945 20.1907 26.9967C20.2497 26.7988 20.2459 26.5875 20.18 26.3918C20.1141 26.1961 19.9893 26.0257 19.8226 25.9038C19.656 25.7819 19.4557 25.7145 19.2492 25.7109C18.4181 25.698 17.6244 25.363 17.0354 24.7764C17.1848 24.7481 17.3332 24.7129 17.4807 24.6709C17.6967 24.6094 17.8857 24.477 18.0173 24.295C18.149 24.1131 18.2155 23.8921 18.2062 23.6677C18.197 23.4433 18.1125 23.2285 17.9664 23.058C17.8202 22.8874 17.6209 22.7711 17.4006 22.7275C16.9181 22.6323 16.4641 22.427 16.0739 22.1277C15.6837 21.8284 15.3677 21.4432 15.1506 21.002C15.3313 21.0266 15.5132 21.0419 15.6955 21.0479C15.9121 21.0511 16.1241 20.9854 16.3009 20.8603C16.4777 20.7351 16.6101 20.5569 16.6789 20.3516C16.7449 20.1443 16.7415 19.9212 16.6692 19.7161C16.597 19.511 16.4598 19.335 16.2785 19.2148C15.8387 18.9218 15.4784 18.5243 15.2299 18.0578C14.9814 17.5913 14.8525 17.0705 14.8547 16.542C14.8547 16.4756 14.8566 16.4092 14.8606 16.3438C17.1018 18.434 20.0089 19.6662 23.0696 19.8233C23.2241 19.8293 23.3779 19.8002 23.5195 19.7382C23.6611 19.6761 23.7868 19.5826 23.8869 19.4649C23.9861 19.346 24.0564 19.2057 24.0921 19.055C24.1278 18.9044 24.1281 18.7475 24.0929 18.5967C24.0358 18.3581 24.0066 18.1136 24.006 17.8682C24.0069 17.0127 24.3472 16.1925 24.9521 15.5876C25.557 14.9827 26.3772 14.6425 27.2326 14.6416C27.6728 14.6404 28.1084 14.7305 28.5119 14.9062C28.9155 15.0818 29.2783 15.3392 29.5773 15.6621C29.6927 15.7862 29.8378 15.8787 29.999 15.9309C30.1602 15.983 30.3321 15.993 30.4982 15.96C30.909 15.8801 31.3139 15.7724 31.7101 15.6377C31.4399 16.1907 31.0945 16.7037 30.6838 17.1621Z" fill="#253042" fill-opacity="0.35"/>
-                                    </svg>
-                                </li>
+                                                            <li className='blog-single__share-item'>
+                                                                <svg className='skype' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
+                                                                    <path d="M33.9904 13.9502C33.9906 13.7736 33.9439 13.6001 33.8551 13.4474C33.7663 13.2946 33.6387 13.1682 33.4852 13.0808C33.3316 12.9935 33.1577 12.9484 32.9811 12.9502C32.8045 12.9519 32.6315 13.0005 32.4797 13.0908C31.8944 13.4392 31.2642 13.706 30.6067 13.8838C29.6677 13.0781 28.47 12.6371 27.2327 12.6416C25.8753 12.6432 24.5716 13.1722 23.5969 14.117C22.6222 15.0618 22.0529 16.3484 22.0091 17.7051C19.333 17.2784 16.9077 15.8816 15.1955 13.7813C15.0924 13.6561 14.9606 13.5576 14.8114 13.494C14.6622 13.4304 14.4998 13.4037 14.3381 13.416C14.1765 13.4293 14.0205 13.4818 13.8837 13.5689C13.7469 13.656 13.6334 13.7752 13.5529 13.916C13.1405 14.6358 12.9036 15.4428 12.8615 16.2713C12.8194 17.0999 12.9733 17.9267 13.3107 18.6846L13.3088 18.6865C13.1571 18.7799 13.032 18.9107 12.9453 19.0663C12.8586 19.2218 12.8133 19.3971 12.8137 19.5752C12.8118 19.7221 12.8207 19.869 12.84 20.0146C12.9422 21.2729 13.4998 22.4507 14.4084 23.3271C14.3468 23.4446 14.3092 23.5731 14.2977 23.7052C14.2863 23.8373 14.3014 23.9704 14.342 24.0967C14.7381 25.3308 15.5805 26.3727 16.7043 27.0185C15.5625 27.46 14.3297 27.614 13.1145 27.4668C12.8895 27.4386 12.6617 27.4876 12.4683 27.6059C12.2749 27.7242 12.1275 27.9047 12.0502 28.1178C11.9729 28.3309 11.9703 28.5639 12.0428 28.7787C12.1154 28.9935 12.2588 29.1772 12.4495 29.2998C14.5396 30.646 16.9731 31.3617 19.4592 31.3613C22.2785 31.393 25.0292 30.4921 27.2835 28.7988C29.5377 27.1054 31.1692 24.7145 31.924 21.998C32.2771 20.8146 32.4574 19.5865 32.4592 18.3516C32.4592 18.2861 32.4592 18.2188 32.4582 18.1514C32.9803 17.5883 33.3848 16.9267 33.6479 16.2053C33.911 15.4839 34.0275 14.7172 33.9904 13.9502ZM30.6838 17.1621C30.5186 17.3575 30.435 17.6089 30.4504 17.8643C30.4602 18.0293 30.4592 18.1953 30.4592 18.3516C30.4571 19.3951 30.3042 20.4329 30.0051 21.4326C29.3886 23.744 28.0142 25.7817 26.1022 27.2192C24.1901 28.6568 21.8509 29.4111 19.4592 29.3613C18.6001 29.3616 17.7439 29.2606 16.9084 29.0606C17.9739 28.7172 18.97 28.1879 19.8508 27.4971C20.0131 27.3693 20.1318 27.1945 20.1907 26.9967C20.2497 26.7988 20.2459 26.5875 20.18 26.3918C20.1141 26.1961 19.9893 26.0257 19.8226 25.9038C19.656 25.7819 19.4557 25.7145 19.2492 25.7109C18.4181 25.698 17.6244 25.363 17.0354 24.7764C17.1848 24.7481 17.3332 24.7129 17.4807 24.6709C17.6967 24.6094 17.8857 24.477 18.0173 24.295C18.149 24.1131 18.2155 23.8921 18.2062 23.6677C18.197 23.4433 18.1125 23.2285 17.9664 23.058C17.8202 22.8874 17.6209 22.7711 17.4006 22.7275C16.9181 22.6323 16.4641 22.427 16.0739 22.1277C15.6837 21.8284 15.3677 21.4432 15.1506 21.002C15.3313 21.0266 15.5132 21.0419 15.6955 21.0479C15.9121 21.0511 16.1241 20.9854 16.3009 20.8603C16.4777 20.7351 16.6101 20.5569 16.6789 20.3516C16.7449 20.1443 16.7415 19.9212 16.6692 19.7161C16.597 19.511 16.4598 19.335 16.2785 19.2148C15.8387 18.9218 15.4784 18.5243 15.2299 18.0578C14.9814 17.5913 14.8525 17.0705 14.8547 16.542C14.8547 16.4756 14.8566 16.4092 14.8606 16.3438C17.1018 18.434 20.0089 19.6662 23.0696 19.8233C23.2241 19.8293 23.3779 19.8002 23.5195 19.7382C23.6611 19.6761 23.7868 19.5826 23.8869 19.4649C23.9861 19.346 24.0564 19.2057 24.0921 19.055C24.1278 18.9044 24.1281 18.7475 24.0929 18.5967C24.0358 18.3581 24.0066 18.1136 24.006 17.8682C24.0069 17.0127 24.3472 16.1925 24.9521 15.5876C25.557 14.9827 26.3772 14.6425 27.2326 14.6416C27.6728 14.6404 28.1084 14.7305 28.5119 14.9062C28.9155 15.0818 29.2783 15.3392 29.5773 15.6621C29.6927 15.7862 29.8378 15.8787 29.999 15.9309C30.1602 15.983 30.3321 15.993 30.4982 15.96C30.909 15.8801 31.3139 15.7724 31.7101 15.6377C31.4399 16.1907 31.0945 16.7037 30.6838 17.1621Z" fill="#253042" fill-opacity="0.35"/>
+                                                                </svg>
+                                                            </li>
 
-                                <li className='blog-single__share-item'>
-                                    <svg className='whatsapp' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
-                                        <path d="M27.6 23.9996C27.4 23.8996 26.1 23.2996 25.9 23.1996C25.7 23.0996 25.5 23.0996 25.3 23.2996C25.1 23.4996 24.7 24.0996 24.5 24.2996C24.4 24.4996 24.2 24.4996 24 24.3996C23.3 24.0996 22.6 23.6996 22 23.1996C21.5 22.6996 21 22.0996 20.6 21.4996C20.5 21.2996 20.6 21.0996 20.7 20.9996C20.8 20.8996 20.9 20.6996 21.1 20.5996C21.2 20.4996 21.3 20.2996 21.3 20.1996C21.4 20.0996 21.4 19.8996 21.3 19.7996C21.2 19.6996 20.7 18.4996 20.5 17.9996C20.4 17.2996 20.2 17.2996 20 17.2996C19.9 17.2996 19.7 17.2996 19.5 17.2996C19.3 17.2996 19 17.4996 18.9 17.5996C18.3 18.1996 18 18.8996 18 19.6996C18.1 20.5996 18.4 21.4996 19 22.2996C20.1 23.8996 21.5 25.1996 23.2 25.9996C23.7 26.1996 24.1 26.3996 24.6 26.4996C25.1 26.6996 25.6 26.6996 26.2 26.5996C26.9 26.4996 27.5 25.9996 27.9 25.3996C28.1 24.9996 28.1 24.5996 28 24.1996C28 24.1996 27.8 24.0996 27.6 23.9996ZM30.1 14.8996C26.2 10.9996 19.9 10.9996 16 14.8996C12.8 18.0996 12.2 22.9996 14.4 26.8996L13 31.9996L18.3 30.5996C19.8 31.3996 21.4 31.7996 23 31.7996C28.5 31.7996 32.9 27.3996 32.9 21.8996C33 19.2996 31.9 16.7996 30.1 14.8996ZM27.4 28.8996C26.1 29.6996 24.6 30.1996 23 30.1996C21.5 30.1996 20.1 29.7996 18.8 29.0996L18.5 28.8996L15.4 29.6996L16.2 26.6996L16 26.3996C13.6 22.3996 14.8 17.3996 18.7 14.8996C22.6 12.3996 27.6 13.6996 30 17.4996C32.4 21.3996 31.3 26.4996 27.4 28.8996Z" fill="#253042" fill-opacity="0.35"/>
-                                    </svg>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                                                            <li className='blog-single__share-item'>
+                                                                <svg className='whatsapp' width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <circle cx="22.5" cy="22.5" r="22.5" fill="#F6F6F8"/>
+                                                                    <path d="M27.6 23.9996C27.4 23.8996 26.1 23.2996 25.9 23.1996C25.7 23.0996 25.5 23.0996 25.3 23.2996C25.1 23.4996 24.7 24.0996 24.5 24.2996C24.4 24.4996 24.2 24.4996 24 24.3996C23.3 24.0996 22.6 23.6996 22 23.1996C21.5 22.6996 21 22.0996 20.6 21.4996C20.5 21.2996 20.6 21.0996 20.7 20.9996C20.8 20.8996 20.9 20.6996 21.1 20.5996C21.2 20.4996 21.3 20.2996 21.3 20.1996C21.4 20.0996 21.4 19.8996 21.3 19.7996C21.2 19.6996 20.7 18.4996 20.5 17.9996C20.4 17.2996 20.2 17.2996 20 17.2996C19.9 17.2996 19.7 17.2996 19.5 17.2996C19.3 17.2996 19 17.4996 18.9 17.5996C18.3 18.1996 18 18.8996 18 19.6996C18.1 20.5996 18.4 21.4996 19 22.2996C20.1 23.8996 21.5 25.1996 23.2 25.9996C23.7 26.1996 24.1 26.3996 24.6 26.4996C25.1 26.6996 25.6 26.6996 26.2 26.5996C26.9 26.4996 27.5 25.9996 27.9 25.3996C28.1 24.9996 28.1 24.5996 28 24.1996C28 24.1996 27.8 24.0996 27.6 23.9996ZM30.1 14.8996C26.2 10.9996 19.9 10.9996 16 14.8996C12.8 18.0996 12.2 22.9996 14.4 26.8996L13 31.9996L18.3 30.5996C19.8 31.3996 21.4 31.7996 23 31.7996C28.5 31.7996 32.9 27.3996 32.9 21.8996C33 19.2996 31.9 16.7996 30.1 14.8996ZM27.4 28.8996C26.1 29.6996 24.6 30.1996 23 30.1996C21.5 30.1996 20.1 29.7996 18.8 29.0996L18.5 28.8996L15.4 29.6996L16.2 26.6996L16 26.3996C13.6 22.3996 14.8 17.3996 18.7 14.8996C22.6 12.3996 27.6 13.6996 30 17.4996C32.4 21.3996 31.3 26.4996 27.4 28.8996Z" fill="#253042" fill-opacity="0.35"/>
+                                                                </svg>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </>
+                            )
+                        }) : <p className='text-center text-black'>Not Found</p>
+                    }
+                </>
+            )
+        }
     </main>
   )
 }

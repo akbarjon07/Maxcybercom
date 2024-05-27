@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from "react-i18next";
 import "./aboutUs.css";
 import Mission1 from '../../assets/images/mission-one.jpeg';
 import Mission2 from '../../assets/images/mission-two.jpeg';
@@ -6,11 +7,14 @@ import Mission3 from '../../assets/images/mission-three.jpeg';
 import Mission4 from '../../assets/images/mission-four.jpeg';
 
 const AboutUs = () => {
+
+  const { t } = useTranslation();
+
   return (
     <main>
         <section className='about__hero-section'>
             <div className="container flex flex-col items-center justify-center">
-                <h1 className='about__hero-title'>About us</h1>
+                <h1 className='about__hero-title'>{t("about us")}</h1>
 
                 <p className='about__hero-desc'>He’s so similar to me. In person, we’re just weird and silly and stupid together.</p>
             </div>
